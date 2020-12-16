@@ -5,9 +5,11 @@ import App from './App'
 import router from './router'
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
+import IconSvg from './components/IconSvg'
 
 Vue.config.productionTip = false
 
+Vue.use(IconSvg);
 Vue.use(Antd);
 
 /* eslint-disable no-new */
