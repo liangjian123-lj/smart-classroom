@@ -10,9 +10,30 @@
       </div>
       <div class="flex header-right">
         <div>
+          <a-badge :count="count" :number-style="{
+            fontSize: '11px',
+            marginLeft: '-20px',
+            marginTop: '4px'
+          }">
+            <icon-svg name="iconlingdang" class="msg_icon"/>
+          </a-badge>
+        </div>
+        <div class="space-avatar">
           <a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" class="avatar"/>
         </div>
         <div class="flex username">李莉教师</div>
+        <div class="flex caret-down">
+          <a-dropdown :trigger="['click']" placement="bottomRight">
+            <a class="ant-dropdown-link" @click="e => e.preventDefault()">
+              <a-icon type="caret-down" class="white"/>
+            </a>
+            <a-menu slot="overlay" class="dropdown-top">
+              <a-menu-item key="0">
+                <a href="http://www.alipay.com/">退出登录</a>
+              </a-menu-item>
+            </a-menu>
+          </a-dropdown>
+        </div>
       </div>
     </div>
   </div>
@@ -20,7 +41,13 @@
 
 <script>
   export default {
-    name: "HeaderBar.vue"
+    name: "HeaderBar.vue",
+    data(){
+      return{
+        count: 5,
+        show: true
+      }
+    }
   }
 </script>
 
@@ -32,10 +59,8 @@
     justify-content: center;
     align-content: center;
     align-items: center;
-    height: 100%;
   }
   .contain{
-    color: #ffffff;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -47,7 +72,7 @@
   }
   .contain-flex{
     justify-content: space-between;
-    width: 1270px;
+    width: 1280px;
     height: 50px;
     background-color: #1bcbb4;
   }
@@ -71,8 +96,8 @@
   .return{
     width: 130px;
     font-family: MicrosoftYaHei;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 15px;
+    /*font-weight: bold;*/
     font-stretch: normal;
     letter-spacing: 1px;
     color: #f6f6f6;
@@ -98,5 +123,27 @@
     color: #ffffff;
     width: 40px;
     height: 38px;
+  }
+  .space-avatar{
+    margin-left: 46px;
+  }
+  .msg_icon{
+    color: #f6f6f6;
+    font-size: 16px;
+    border-radius: 50%;
+  }
+  .caret-down{
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f6f6f6;
+    color: #F6F6F6;
+    margin-left: 20px;
+  }
+  .white{
+    color: #f6f6f6;
+  }
+  .dropdown-top{
+    margin-top: 10px;
   }
 </style>
