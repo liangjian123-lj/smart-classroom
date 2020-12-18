@@ -6,6 +6,7 @@ import router from './router'
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
 import IconSvg from './components/IconSvg'
+import '../static/reset.less'       //自定义Antd默认样式
 
 Vue.config.productionTip = false
 
