@@ -60,7 +60,7 @@
                   <a @click="() => createRepair(record,text)">新增</a>
                   <a @click="() => editDev(record,text)">编辑</a>
                   <a-popconfirm title="是否确定删除?" cancelText="取消" okText="确定" @confirm="() => deleteDev(record.key)">
-                    <a>删除</a>
+                    <a>删除v</a>
                   </a-popconfirm>
                 </span>
               </div>
