@@ -139,6 +139,7 @@
     border: 2px solid #f6f6f6;
     color: #F6F6F6;
     margin-left: 20px;
+    margin-right: 10px;
   }
   .white{
     color: #f6f6f6;

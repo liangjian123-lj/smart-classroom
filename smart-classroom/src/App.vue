@@ -25,6 +25,7 @@ export default {
     text-align: center;
     color: #2c3e50;
     background: #F6F6F6;
+    height: 100vh;
   }
   .margin-top{
     margin-top: 20px;
