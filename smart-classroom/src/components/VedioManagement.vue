@@ -31,7 +31,7 @@
               <a-date-picker @change="onChange" />
             </a-col>
             <a-col :span="6">
-              <a-button type="primary"  @click="search" icon="search">
+              <a-button type="primary"  @click="search" icon="search" :style="{'background-color': '#54aef2',border: 'none'}">
                 查询
               </a-button>
             </a-col>
@@ -44,24 +44,33 @@
     <div class="tag-page">
       <a-tabs default-active-key="1" @change="callback">
         <a-tab-pane key="1" tab="全部">
-          <a-table :columns="columns" :data-source="data" bordered class="column">
+          <a-table :row-selection="rowSelection" :columns="columns" :data-source="data" :pagination="pagination" bordered class="column">
             <template
-              v-for="col in ['workshop', 'machine', 'equitment','equitmentCode','model','factory','operation']"
-              :slot="col"
+              v-for="col in ['title', 'vedio', 'courseware','presenter','profession','time','publisher','evaluation','status']"
               slot-scope="text, record, index"
             >
+              {{columns}}
+<!--              <div :key="index" class="column-content" slot="title" :title="text">-->
+<!--                {{ text }}-->
+<!--              </div>-->
               <div :key="index" class="column-content" slot="title" :title="text">
                 {{ text }}
               </div>
             </template>
+            <!--    表格主体内容        -->
             <template slot="operation" slot-scope="text, record, index">
               <div class="editable-row-operations">
                <span class="oper">
-                  <a @click="() => createRepair(record,text)">新增</a>
-                  <a @click="() => editDev(record,text)">编辑</a>
-                  <a-popconfirm title="是否确定删除?" cancelText="取消" okText="确定" @confirm="() => deleteDev(record.key)">
-                    <a>删除v</a>
-                  </a-popconfirm>
+                 <div class="flex icon-flex">
+                    <a @click="() => editDev(record,text)" class="flex edit"><icon-svg name="iconbianji" class="icon-oper" />编辑</a>
+                    <a-popconfirm title="是否确定删除?" cancelText="取消" okText="确定" @confirm="() => deleteDev(record.key)">
+                      <a class="flex delete"><icon-svg name="iconshanchu" class="icon-oper" />删除</a>
+                    </a-popconfirm>
+                 </div>
+                 <div class="flex space-icon icon-flex">
+                    <a @click="() => editDev(record,text)" class="flex shield"><icon-svg name="iconbaojingpingbi-01" class="icon-oper" />屏蔽</a>
+                    <a @click="() => editDev(record,text)" class="flex disable"><icon-svg name="iconjinyong" class="icon-oper" />禁用</a>
+                 </div>
                 </span>
               </div>
             </template>
@@ -81,52 +90,76 @@
 <script>
   const columns = [
     {
-      title: '车间',
-      dataIndex: 'workshop',
-      width: '11%',
+      title: '标题',
+      dataIndex: 'title',
+      width: '10%',
       ellipsis: true,
       align: 'center',
-      scopedSlots: { customRender: 'workshop' },
+      scopedSlots: { customRender: 'title' },
     },
     {
-      title: '机台',
-      dataIndex: 'machine',
-      width: '11%',
+      title: '视频',
+      dataIndex: 'vedio',
+      width: '10%',
       ellipsis: true,
       align: 'center',
-      scopedSlots: { customRender: 'machine' },
+      scopedSlots: { customRender: 'vedio' },
     },
     {
-      title: '设备名称',
-      dataIndex: 'equitment',
-      width: '16%',
+      title: '课件',
+      dataIndex: 'courseware',
+      width: '10%',
       ellipsis: true,
       align: 'center',
-      scopedSlots: { customRender: 'equitment' },
+      scopedSlots: { customRender: 'courseware' },
     },
     {
-      title: '设备编码',
-      dataIndex: 'equitmentCode',
-      width: '16%',
+      title: '主讲人',
+      dataIndex: 'presenter',
+      width: '7%',
       ellipsis: true,
       align: 'center',
-      scopedSlots: { customRender: 'equitmentCode' },
+      scopedSlots: { customRender: 'presenter' },
     },
     {
-      title: '型号',
-      dataIndex: 'model',
-      width: '16%',
+      title: '专业',
+      dataIndex: 'profession',
+      width: '10%',
       ellipsis: true,
       align: 'center',
-      scopedSlots: { customRender: 'model' },
+      scopedSlots: { customRender: 'profession' },
     },
     {
-      title: '厂家',
-      dataIndex: 'factory',
-      width: '16%',
+      title: '时间',
+      dataIndex: 'time',
+      width: '10%',
       ellipsis: true,
       align: 'center',
-      scopedSlots: { customRender: 'factory' },
+      scopedSlots: { customRender: 'time' },
+    },
+    {
+      title: '发布人',
+      dataIndex: 'publisher',
+      width: '8%',
+      ellipsis: true,
+      align: 'center',
+      scopedSlots: { customRender: 'publisher' },
+    },
+    {
+      title: '是否课程评比',
+      dataIndex: 'evaluation',
+      width: '6%',
+      ellipsis: true,
+      align: 'center',
+      scopedSlots: { customRender: 'evaluation' },
+    },
+    {
+      title: '状态',
+      dataIndex: 'status',
+      width: '10%',
+      ellipsis: true,
+      align: 'center',
+      scopedSlots: { customRender: 'status' },
     },
     {
       title: '操作',
@@ -140,12 +173,15 @@
   for (let i = 0; i < 100; i++) {
     data.push({
       key: i.toString(),
-      workshop: `车间 ${i}`,
-      machine: `机台 ${i}`,
-      equitment: `铝合金夹梅花联轴器-${i}`,
-      equitmentCode: `${i}50143046324`,
-      model: `型号. ${i}`,
-      factory: `厂家. ${i}`
+      title: `计算机应用管理 ${i}`,
+      vedio: `机台 ${i}`,
+      courseware: `计算机.pdf${i}`,
+      presenter: `李莉${i}`,
+      profession: `计算机 ${i}`,
+      time: `2020-12-26 14:00:${i}`,
+      publisher: `Elaine`,
+      evaluation: `是`,
+      status: `审核通过`,
     });
   }
   export default {
@@ -159,8 +195,35 @@
             name: 'c_name'
           }
         ],
+        form: this.$form.createForm(this, { name: 'advanced_search' }),
+        data,
+        columns,
+        pagination:{
+          total:0,
+          defaultPageSize:10,
+          showTotal: total => `共 ${total} 条数据`,
+          showSizeChanger:true,
+          pageSizeOptions: ['5', '10', '15', '20'],
+          // onShowSizeChange:(current, pageSize)=>this.pageSize = pageSize
+        },
+
       }
-    }
+    },
+    computed: {
+      rowSelection() {
+        return {
+          onChange: (selectedRowKeys, selectedRows) => {
+            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+          },
+          getCheckboxProps: record => ({
+            props: {
+              disabled: record.name === 'Disabled User', // Column configuration not to be checked
+              name: record.name,
+            },
+          }),
+        };
+      },
+    },
   }
 </script>
 
@@ -211,5 +274,33 @@
   .tag-page{
     margin-top: 40px;
     text-align: left;
+  }
+  .column{
+    background-color: #ffffff;
+  }
+  .icon-oper{
+    font-size: 5px;
+    margin-right: 6px;
+    margin-left: 10px;
+  }
+  .edit{
+    color: #12c5f8;
+  }
+  .delete{
+    color: #f8334f;
+  }
+  .shield{
+    color: #e8c25b;
+  }
+  .disable{
+    color: #f733a2;
+  }
+  .space-icon{
+    margin-top: 10px;
+  }
+  .icon-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 </style>

@@ -1,5 +1,6 @@
 @import '~ant-design-vue/dist/antd.less';
 
+//标签页样式更改
 .tag-page .ant-tabs-nav .ant-tabs-tab-active {
   color: #1bcbb4;
 }
@@ -10,4 +11,58 @@
 
 .tag-page .ant-tabs-tab:hover{
   color: #1bcbb4;
+}
+
+//表格样式更改
+.ant-table-thead > tr > th, .ant-table-tbody > tr > td {
+  padding: 8px;
+}
+
+.ant-table{
+  font-size: 12px;
+}
+
+.ant-table-bordered .ant-table-thead > tr > th, .ant-table-bordered .ant-table-tbody > tr > td{
+  border-right: 0px;
+}
+
+.ant-table-thead > tr > th{
+  background-color: rgb(213,214,216);
+  border-radius: 0px;
+  //opacity: 0.2;
+}
+
+.ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td {
+  background-color: rgba(27,203,180,0.1)!important;
+}
+.ant-table-body .ant-table-row-hover{
+  background: rgba(27,203,180,0.1)!important;
+}
+.ant-table-body .ant-table-row-hover>td{
+  background: rgba(27,203,180,0.1)!important;
+}
+
+
+//多选框样式更改
+.ant-checkbox-checked::after{
+  border: 1px solid #1bcbb4;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner{
+  background-color: #1bcbb4;
+  border: 1px solid #1bcbb4;
+}
+
+.ant-checkbox-wrapper:hover .ant-checkbox-inner,
+.ant-checkbox:hover .ant-checkbox-inner,
+.ant-checkbox-input:focus + .ant-checkbox-inner{
+  border: 1px solid #1bcbb4 !important;
+}
+
+.ant-checkbox-indeterminate .ant-checkbox-inner::after{
+  background-color: #1bcbb4;
+}
+
+.ant-checkbox-indeterminate .ant-checkbox-inner {
+  background-color: #ffffff;
 }
