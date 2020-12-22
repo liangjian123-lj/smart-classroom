@@ -1,68 +1,68 @@
 <template>
   <div class="container">
-    <!--  主题内容标题   -->
-    <div class="flex contain-header">
-      <div class="contain-title">视频管理</div>
-      <div class="flex contain-left">
-        <div><icon-svg name="iconadd-dashboard" class="nav-icon" /></div>
-        <div class="add">新增</div>
-      </div>
+  <!--  主题内容标题   -->
+  <div class="flex contain-header">
+    <div class="contain-title">视频管理</div>
+    <div class="flex contain-left">
+      <div><icon-svg name="iconadd-dashboard" class="nav-icon" /></div>
+      <div class="add">新增</div>
     </div>
-    <!--  查询    -->
-    <a-form class="form" :form="form" @submit="handleSearch">
-      <a-row :gutter="24">
-        <a-col
-          v-for="(item,index) in label"
-          :key="index"
-          :span="21"
-          class="margin-bottom"
-        >
-          <div class="flex-center">
-            <a-col :span="2">
-              {{item.title}}：
-            </a-col>
-            <a-col :span="6">
-              <a-input :placeholder="item.placeholder" :name="item.name"/>
-            </a-col>
-            <a-col :span="2">
-              时间：
-            </a-col>
-            <a-col :span="6">
-              <a-date-picker @change="onChange" />
-            </a-col>
-            <a-col :span="6">
-              <a-button type="primary"  @click="search" icon="search" :style="{'background-color': '#54aef2',border: 'none'}">
-                查询
-              </a-button>
-            </a-col>
-          </div>
-        </a-col>
-      </a-row>
-    </a-form>
+  </div>
+  <!--  查询    -->
+  <a-form class="form" :form="form" @submit="handleSearch">
+    <a-row :gutter="24">
+      <a-col
+        v-for="(item,index) in label"
+        :key="index"
+        :span="21"
+        class="margin-bottom"
+      >
+        <div class="flex-center">
+          <a-col :span="2">
+            {{item.title}}：
+          </a-col>
+          <a-col :span="6">
+            <a-input :placeholder="item.placeholder" :name="item.name"/>
+          </a-col>
+          <a-col :span="2">
+            时间：
+          </a-col>
+          <a-col :span="6">
+            <a-date-picker @change="onChange" />
+          </a-col>
+          <a-col :span="6">
+            <a-button type="primary"  @click="search" icon="search" :style="{'background-color': '#54aef2',border: 'none'}">
+              查询
+            </a-button>
+          </a-col>
+        </div>
+      </a-col>
+    </a-row>
+  </a-form>
 
-    <!--  表格头部标签页  -->
-    <div class="tag-page">
-      <a-tabs default-active-key="1" @change="callback">
-        <a-tab-pane key="1" tab="全部">
-          <a-table :row-selection="rowSelection" :columns="columns" :data-source="data" :pagination="pagination" bordered class="column">
-            <template
-              v-for="col in ['title', 'vedio', 'courseware','presenter','profession','time','publisher','evaluation','status']"
-              slot-scope="text, record, index"
-            >
-              {{columns}}
-              <div :key="index" class="column-content" slot="title" :title="text">
-                {{ text }}
-              </div>
-            </template>
-            <!--    表格操作列内容        -->
-            <template slot="vedio" slot-scope="text, record, index">
-              <div class="img-con">
-                <img src="../../assets/su.jpeg" alt="" class="img">
-              </div>
-            </template>
-            <!--    表格操作列内容        -->
-            <template slot="operation" slot-scope="text, record, index">
-              <div class="editable-row-operations">
+  <!--  表格头部标签页  -->
+  <div class="tag-page">
+    <a-tabs default-active-key="1" @change="callback">
+      <a-tab-pane key="1" tab="全部">
+        <a-table :row-selection="rowSelection" :columns="columns" :data-source="data" :pagination="pagination" bordered class="column">
+          <template
+            v-for="col in ['title', 'vedio', 'courseware','presenter','profession','time','publisher','evaluation','status']"
+            slot-scope="text, record, index"
+          >
+            {{columns}}
+            <div :key="index" class="column-content" slot="title" :title="text">
+              {{ text }}
+            </div>
+          </template>
+          <!--    表格操作列内容        -->
+          <template slot="vedio" slot-scope="text, record, index">
+            <div class="img-con">
+              <img src="../../assets/su.jpeg" alt="" class="img">
+            </div>
+          </template>
+          <!--    表格操作列内容        -->
+          <template slot="operation" slot-scope="text, record, index">
+            <div class="editable-row-operations">
                <span class="oper">
                  <div class="flex icon-flex">
                     <a @click="() => editDev(record,text)" class="flex edit"><icon-svg name="iconbianji" class="icon-oper" />编辑</a>
@@ -75,19 +75,19 @@
                     <a @click="() => editDev(record,text)" class="flex disable"><icon-svg name="iconjinyong" class="icon-oper" />禁用</a>
                  </div>
                 </span>
-              </div>
-            </template>
-          </a-table>
-        </a-tab-pane>
-        <a-tab-pane key="2" tab="通过" force-render>
-          Content of Tab Pane 2
-        </a-tab-pane>
-        <a-tab-pane key="3" tab="未通过">
-          Content of Tab Pane 3
-        </a-tab-pane>
-      </a-tabs>
-    </div>
+            </div>
+          </template>
+        </a-table>
+      </a-tab-pane>
+      <a-tab-pane key="2" tab="通过" force-render>
+        Content of Tab Pane 2
+      </a-tab-pane>
+      <a-tab-pane key="3" tab="未通过">
+        Content of Tab Pane 3
+      </a-tab-pane>
+    </a-tabs>
   </div>
+</div>
 </template>
 
 <script>
@@ -208,7 +208,6 @@
           showQuickJumper: true,
           showSizeChanger:true,
           pageSizeOptions: ['5', '10', '15', '20'],
-          // onShowSizeChange:(current, pageSize)=>this.pageSize = pageSize
         },
 
       }
@@ -216,9 +215,9 @@
     computed: {
       rowSelection() {
         return {
-          onChange: (selectedRowKeys, selectedRows) => {
-            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-          },
+          // onChange: (selectedRowKeys, selectedRows) => {
+          //   console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+          // },
           getCheckboxProps: record => ({
             props: {
               disabled: record.name === 'Disabled User', // Column configuration not to be checked
