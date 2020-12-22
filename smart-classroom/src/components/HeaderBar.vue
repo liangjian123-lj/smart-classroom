@@ -69,6 +69,7 @@
     height: 68px;
     background-color: #1bcbb4;
     box-shadow: 0px 1px 13px 0px #bababa;
+    margin-top: 0px;
   }
   .contain-flex{
     justify-content: space-between;

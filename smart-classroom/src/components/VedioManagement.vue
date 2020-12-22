@@ -50,14 +50,17 @@
               slot-scope="text, record, index"
             >
               {{columns}}
-<!--              <div :key="index" class="column-content" slot="title" :title="text">-->
-<!--                {{ text }}-->
-<!--              </div>-->
               <div :key="index" class="column-content" slot="title" :title="text">
                 {{ text }}
               </div>
             </template>
-            <!--    表格主体内容        -->
+            <!--    表格操作列内容        -->
+            <template slot="vedio" slot-scope="text, record, index">
+              <div class="img-con">
+                <img src="../assets/su.jpeg" alt="" class="img">
+              </div>
+            </template>
+            <!--    表格操作列内容        -->
             <template slot="operation" slot-scope="text, record, index">
               <div class="editable-row-operations">
                <span class="oper">
@@ -202,6 +205,7 @@
           total:0,
           defaultPageSize:10,
           showTotal: total => `共 ${total} 条数据`,
+          showQuickJumper: true,
           showSizeChanger:true,
           pageSizeOptions: ['5', '10', '15', '20'],
           // onShowSizeChange:(current, pageSize)=>this.pageSize = pageSize
@@ -234,7 +238,7 @@
   }
   .container{
     width: 1032px;
-    height: 962px;
+    height: 100%;
     background-color: #ffffff;
     border-radius: 4px;
     border: 1px solid #eeeeee;
@@ -302,5 +306,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+  .img-con{
+    width: 100%;
+  }
+  .img{
+    width: 100%;
+    /*height: 57px;*/
   }
 </style>

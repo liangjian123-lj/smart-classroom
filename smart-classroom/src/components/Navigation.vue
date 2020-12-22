@@ -60,7 +60,7 @@
 <style scoped>
   .menu{
     width: 218px;
-    height: 100vh;
+    height: 100%;
     background-color: #ffffff;
     border-radius: 4px;
   }
