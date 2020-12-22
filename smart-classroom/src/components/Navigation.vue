@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
     <template v-for="(item,index) in navList">
-      <div class="menu-item" :class="{'selected': item.selected ? true : false}">
+      <div class="menu-item" :class="{'selected': item.selected ? true : false}" @click="navPage(item.path)">
         <div class="list-item">
           <div class="space-between">
             <div class="icon">
@@ -25,34 +25,72 @@
             iconName: 'icontubiaozhizuomoban',
             title: '视频管理',
             path: '/vedioManagement',
-            selected: true
+            selected: false
           },
           {
             iconName: 'iconkeben',
             title: '课件管理',
-            path: '/vedioManagement',
+            path: '/coursewareManagement',
             selected: false
           },
           {
             iconName: 'iconguanzhu',
             title: '关注和粉丝',
-            path: '/vedioManagement',
+            path: '/followsFans',
             selected: false
           },
           {
             iconName: 'iconshoucang',
             title: '我的收藏',
-            path: '/vedioManagement',
+            path: '/favorites',
             selected: false
           },
           {
             iconName: 'iconzhanghaoguanli',
             title: '账号管理',
-            path: '/vedioManagement',
+            path: '/accountManagement',
             selected: false
           },
         ]
       }
+    },
+    created() {
+      this.initNav()
+    },
+    //监听路由变化
+    watch:{
+      $route(to,from){
+        this.initNav()
+      }
+    },
+    methods: {
+      //初始化导航栏跳转显示
+      initNav(){
+        this.navList.forEach((item) => {
+          item.selected = false
+        })
+        if (this.$route.path == '/vedioManagement'){
+          this.navList[0].selected = true
+        }
+        else if(this.$route.path == '/coursewareManagement'){
+          this.navList[1].selected = true
+        }
+        else if(this.$route.path == '/followsFans'){
+          this.navList[2].selected = true
+        }
+        else if(this.$route.path == '/favorites'){
+          this.navList[3].selected = true
+        }
+        else if(this.$route.path == '/accountManagement'){
+          this.navList[4].selected = true
+        }
+      },
+      // 页面跳转
+      navPage(path){
+        this.$router.push(path)
+        this.initNav()
+      },
+
     }
   }
 </script>

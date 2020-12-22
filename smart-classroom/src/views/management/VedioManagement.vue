@@ -57,7 +57,7 @@
             <!--    表格操作列内容        -->
             <template slot="vedio" slot-scope="text, record, index">
               <div class="img-con">
-                <img src="../assets/su.jpeg" alt="" class="img">
+                <img src="../../assets/su.jpeg" alt="" class="img">
               </div>
             </template>
             <!--    表格操作列内容        -->
