@@ -11,34 +11,31 @@
         <a-tab-pane key="1" tab="我的关注">
           <a-list item-layout="vertical" size="large" :pagination="pagination" :data-source="listData">
             <a-list-item slot="renderItem" key="item.title" slot-scope="item, index">
-<!--              <img-->
-<!--                slot="extra"-->
-<!--                width="272"-->
-<!--                alt="logo"-->
-<!--                src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"-->
-<!--              />-->
               <div slot="extra">
+                <div class="more">
+                  更多 >>
+                </div>
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" alt="vedio" class="image">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" alt="vedio" class="image">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" alt="vedio" class="image">
               </div>
               <a-list-item-meta :description="item.description">
-                <div slot="title" class="title">
-                  <div>{{ item.title }}</div>
-                  <div class="course">课程数： {{item.course}}</div>
+                <div slot="title" class="header">
+                  <div class="title">
+                    <div>{{ item.title }}</div>
+                    <div class="course">课程数： {{item.course}}</div>
+                    <a-tag color="#1bcbb4">
+                      已关注
+                    </a-tag>
+                  </div>
                 </div>
                 <a-avatar slot="avatar" :src="item.avatar" class="avatar"/>
 
               </a-list-item-meta>
               <div class="followed">
-                <a-tag color="#1bcbb4">
-                  已关注
-                </a-tag>
                 <a-button>取消关注</a-button>
               </div>
-<!--              <div class="followed">-->
-<!--                已关注-->
-<!--              </div>-->
+
             </a-list-item>
           </a-list>
         </a-tab-pane>
@@ -52,7 +49,7 @@
 
 <script>
   const listData = [];
-  for (let i = 0; i < 23; i++) {
+  for (let i = 0; i < 100; i++) {
     listData.push({
       title: `李丽`,
       avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
@@ -67,7 +64,7 @@
       return {
         listData,
         pagination: {
-            total: 40,
+            total: 100,
             defaultPageSize: 10,
             showTotal: total => `共 ${total} 条数据`,
             showQuickJumper: true,
@@ -139,24 +136,34 @@
     flex-direction: row;
     align-content: center;
   }
+  .header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
   .course{
     font-family: MicrosoftYaHei;
     font-size: 12px;
     color: #999999;
     margin-left: 15px;
+    margin-right: 15px;
   }
   .followed{
-    /*display: inline-block;*/
-    /*padding: 6px 15px;*/
     margin-left: 98px;
     margin-top: -10px;
-    /*border: 1px solid #1bcbb4;*/
-    /*border-radius: 3px;*/
-    /*color: #1bcbb4;*/
-    /*cursor: pointer;*/
   }
   .image{
     width: 194px;
     height: 118px;
+  }
+  .more{
+    font-size: 13px;
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  .more:hover{
+    color: #1bcbb4;
   }
 </style>
