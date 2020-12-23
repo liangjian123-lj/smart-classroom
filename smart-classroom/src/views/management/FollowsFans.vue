@@ -189,6 +189,7 @@
   .image{
     width: 194px;
     height: 118px;
+    cursor: pointer;
   }
   .more{
     display: inline-block;
@@ -205,8 +206,5 @@
   }
   .column-space{
     margin-top: 30px;
-  }
-  .list-con{
-
   }
 </style>
