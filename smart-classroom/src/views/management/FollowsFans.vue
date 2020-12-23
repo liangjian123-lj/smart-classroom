@@ -12,8 +12,10 @@
           <a-list item-layout="vertical" size="large" :pagination="pagination" :data-source="listData">
             <a-list-item slot="renderItem" key="item.title" slot-scope="item, index">
               <div slot="extra">
-                <div class="more">
-                  更多 >>
+                <div class="more-list">
+                  <div class="more">
+                    更多 >>
+                  </div>
                 </div>
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" alt="vedio" class="image">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" alt="vedio" class="image">
@@ -157,11 +159,14 @@
     height: 118px;
   }
   .more{
+    display: inline-block;
     font-size: 13px;
-    text-align: right;
+    cursor: pointer;
+  }
+  .more-list{
     margin-top: -10px;
     margin-bottom: 5px;
-    cursor: pointer;
+    text-align: right;
   }
   .more:hover{
     color: #1bcbb4;
