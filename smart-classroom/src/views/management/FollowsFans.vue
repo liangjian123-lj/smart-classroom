@@ -8,6 +8,7 @@
     <!--  表格头部标签页  -->
     <div class="tag-page">
       <a-tabs default-active-key="1" @change="callback">
+        <!--    我的关注      -->
         <a-tab-pane key="1" tab="我的关注">
           <a-list item-layout="vertical" size="large" :pagination="pagination" :data-source="listData">
             <a-list-item slot="renderItem" key="item.title" slot-scope="item, index">
@@ -32,17 +33,34 @@
                   </div>
                 </div>
                 <a-avatar slot="avatar" :src="item.avatar" class="avatar"/>
-
               </a-list-item-meta>
               <div class="followed">
                 <a-button>取消关注</a-button>
               </div>
-
             </a-list-item>
           </a-list>
         </a-tab-pane>
+        <!--   我的粉丝     -->
         <a-tab-pane key="2" tab="我的粉丝" force-render>
-          Content of Tab Pane 2
+          <a-list :grid="{ gutter: 66, column: 3 }" :data-source="data" :pagination="pagination">
+            <a-list-item slot="renderItem" slot-scope="item, index" class="column-space">
+              <a-list-item-meta :description="item.description">
+                <div slot="title" class="header">
+                  <div class="title">
+                    <div>{{ item.title }}</div>
+                    <div class="course">课程数： {{item.course}}</div>
+                    <a-tag color="#1bcbb4">
+                      已关注
+                    </a-tag>
+                  </div>
+                </div>
+                <a-avatar slot="avatar" :src="item.avatar" class="avatar"/>
+              </a-list-item-meta>
+              <div class="followed">
+                <a-button>取消关注</a-button>
+              </div>
+            </a-list-item>
+          </a-list>
         </a-tab-pane>
       </a-tabs>
     </div>
@@ -50,7 +68,10 @@
 </template>
 
 <script>
-  const listData = [];
+  const listData = [];      //我的关注
+  //我的粉丝
+  const data = [];
+  //我的关注
   for (let i = 0; i < 100; i++) {
     listData.push({
       title: `李丽`,
@@ -59,12 +80,23 @@
       course: '3',
     });
   }
+  //我的粉丝
+  for (let i = 0; i < 100; i++) {
+    data.push({
+      title: `李丽`,
+      avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+      description: '吉林珠海大学计算机学院老师',
+      course: '4',
+    });
+  }
+
 
   export default {
     name: "FollowsFans.vue",
     data() {
       return {
         listData,
+        data,
         pagination: {
             total: 100,
             defaultPageSize: 10,
@@ -170,5 +202,11 @@
   }
   .more:hover{
     color: #1bcbb4;
+  }
+  .column-space{
+    margin-top: 30px;
+  }
+  .list-con{
+
   }
 </style>
