@@ -51,25 +51,7 @@
         </a-tab-pane>
         <!--   课件     -->
         <a-tab-pane key="2" tab="课件" force-render>
-          <a-list :grid="{ gutter: 66, column: 3 }" :data-source="data" :pagination="pagination">
-            <a-list-item slot="renderItem" slot-scope="item, index" class="column-space">
-              <a-list-item-meta :description="item.description">
-                <div slot="title" class="header">
-                  <div class="title">
-                    <div>{{ item.title }}</div>
-                    <div class="course">课程数： {{item.course}}</div>
-                    <a-tag color="#1bcbb4">
-                      已关注
-                    </a-tag>
-                  </div>
-                </div>
-                <a-avatar slot="avatar" :src="item.avatar" class="avatar"/>
-              </a-list-item-meta>
-              <div class="followed">
-                <a-button>取消关注</a-button>
-              </div>
-            </a-list-item>
-          </a-list>
+          <div>我是课件</div>
         </a-tab-pane>
       </a-tabs>
     </div>
