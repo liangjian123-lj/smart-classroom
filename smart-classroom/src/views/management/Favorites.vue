@@ -17,11 +17,20 @@
                   <div slot="title" class="header">
                     <img :src="item.img" alt="vedio" class="image">
                     <div class="title">
-                      <div class="title-text" :title="item.title">{{ item.title }}</div>
-                      <div class="flex collect">
-                        <a-icon type="star" theme="filled" :style="{color: '#1bcbb4'}"/>
-                        <span class="collect-text">收藏</span>
-                      </div>
+                      <template v-if="item.isCollected">
+                        <div class="title-text" :title="item.title">{{ item.title }}</div>
+                        <div class="flex collect">
+                          <a-icon type="star" theme="filled" :style="{color: '#1bcbb4'}"/>
+                          <span class="collect-text">已收藏</span>
+                        </div>
+                      </template>
+                      <template v-else>
+                        <div class="title-text title-width" :title="item.title">{{ item.title }}</div>
+                        <div class="flex collect">
+                          <a-icon type="star"/>
+                          <span class="collect-text">收藏</span>
+                        </div>
+                      </template>
                     </div>
                   </div>
                 </a-list-item-meta>
@@ -41,8 +50,14 @@
                     <span>{{item.presenter}}</span>
                   </div>
                   <div>
-                    <span><a-icon type="heart" theme="filled"/></span>
-                    <span>已关注</span>
+                    <template v-if="item.isFollow">
+                      <span><a-icon type="heart" theme="filled"/></span>
+                      <span>已关注</span>
+                    </template>
+                    <template v-else>
+                      <span><a-icon type="heart"/></span>
+                      <span>关注</span>
+                    </template>
                   </div>
                 </div>
               </div>
@@ -80,7 +95,7 @@
       startTime: '5月26日 22：00',
       classroom: '明德楼 A101',
       presenter: '李丽',
-      isFollow: true,
+      isFollow: false,
     });
   }
 
@@ -169,11 +184,14 @@
     font-size: 15px;
     font-weight: 600;
     color: #222222;
-    width: 170px;
+    width: 152px;
     text-align: left;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  .title-width{
+    width: 170px;
   }
   .collect{
     align-items: center;
