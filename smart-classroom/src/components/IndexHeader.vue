@@ -6,37 +6,15 @@
           <a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" class="avatar"/>
         </div>
         <div class="title">清华大学</div>
-        <div>
+        <div class="flex">
           <a-input placeholder="请输入关键词" allow-clear @change="onChange" />
           <icon-svg name="iconchaxun" class="search_icon"/>
         </div>
       </div>
-      <div class="flex header-right">
-        <div>
-          <a-badge :count="count" :number-style="{
-            fontSize: '11px',
-            marginLeft: '-20px',
-            marginTop: '4px'
-          }">
-            <icon-svg name="iconlingdang" class="msg_icon"/>
-          </a-badge>
-        </div>
-        <div class="space-avatar">
-          <a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" class="avatar"/>
-        </div>
-        <div class="flex username">测试</div>
-        <div class="flex caret-down">
-          <a-dropdown :trigger="['click']" placement="bottomRight">
-            <a class="ant-dropdown-link" @click="e => e.preventDefault()">
-              <a-icon type="caret-down" class="white"/>
-            </a>
-            <a-menu slot="overlay" class="dropdown-top">
-              <a-menu-item key="0">
-                <a href="http://www.alipay.com/">退出登录</a>
-              </a-menu-item>
-            </a-menu>
-          </a-dropdown>
-        </div>
+      <div class="header-right">
+        <a-button>
+         登录/注册
+        </a-button>
       </div>
     </div>
   </div>
@@ -54,7 +32,7 @@
   }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
   .flex{
     display: flex;
     flex-direction: row;
@@ -70,7 +48,7 @@
     align-items: center;
     width: 100%;
     height: 68px;
-    background-color: #1bcbb4;
+    background-color: #5dd5c8;
     box-shadow: 0px 1px 13px 0px #bababa;
     margin-top: 0px;
   }
@@ -78,13 +56,13 @@
     justify-content: space-between;
     width: 1280px;
     height: 50px;
-    background-color: #1bcbb4;
+    background-color: #5dd5c8;
   }
   .header-left{
     justify-content: space-between;
   }
   .header-right{
-
+    margin-right: 10px;
   }
   .title{
     width: 120px;
@@ -94,19 +72,8 @@
     font-stretch: normal;
     line-height: 40px;
     letter-spacing: 1px;
-    color: #f6f6f6;
+    color: #1a1918;
     margin-left: 12px;
-  }
-  .return{
-    width: 130px;
-    font-family: MicrosoftYaHei;
-    font-size: 15px;
-    /*font-weight: bold;*/
-    font-stretch: normal;
-    letter-spacing: 1px;
-    color: #f6f6f6;
-    cursor: pointer;
-    margin-left: 48px;
   }
   .username{
     width: 30px;
@@ -120,8 +87,8 @@
   }
   .avatar{
     border: 2px solid #ffffff;
-    width: 44px;
-    height: 44px;
+    width: 60px;
+    height: 60px;
   }
   .search_icon{
     color: #5dd5c8;
@@ -132,6 +99,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 12px;
+    margin-left: 10px;
+    font-size: 11px;
+    cursor: pointer;
+  }
+  .search_icon:hover{
+    background-color: #1bcbb4;
+    color: #ffffff;
+    border: 1px solid #ffffff;
   }
   .space-avatar{
     margin-left: 46px;
@@ -155,5 +131,28 @@
   }
   .dropdown-top{
     margin-top: 10px;
+  }
+
+  /*覆盖ant默认input样式*/
+  .flex {
+    :global(.ant-input){
+      padding: 18px;
+      width: 300px;
+    }
+  }
+  .header-right{
+    :global(.ant-btn){
+      background-color: #5dd5c8;
+      border: 1px solid #ffffff;
+      color: #ffffff;
+      padding: 18px 10px;
+      vertical-align: middle;
+      line-height: 3px;
+    }
+    :global(.ant-btn:hover){
+      background-color: #ffffff;
+      color: #1bcbb4;
+      border: 1px solid #1bcbb4;
+    }
   }
 </style>
