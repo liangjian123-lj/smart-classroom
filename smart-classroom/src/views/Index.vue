@@ -98,6 +98,28 @@
               </a-list>
             </div>
 
+<!--            <div style="width: 899px;height:25px; ">-->
+<!--              <div style="width: 104px;height: 25px;float: left">-->
+<!--                <div style="width: 27px;height: 25px;float: left;">-->
+<!--                  <img src="../assets/sheying.png" style="line-height: 25px">-->
+<!--                </div>-->
+<!--                <div class="zhibo">直播</div>-->
+<!--              </div>-->
+<!--              <div class="geng"><a href="#" style="color: #999999">更多>></a></div>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <a-list :grid="{ gutter: 16, column: 3 }" :data-source="data_1">-->
+<!--                <a-list-item slot="renderItem" slot-scope="item, index">-->
+<!--                  <div class="list-item">-->
+<!--                    <a-list-item :description="item.description">-->
+<!--                      <div slot="">-->
+
+<!--                      </div>-->
+<!--                    </a-list-item>-->
+<!--                  </div>-->
+<!--                </a-list-item>-->
+<!--              </a-list>-->
+<!--            </div>-->
             <div style="width: 899px;height:25px; ">
               <div style="width: 104px;height: 25px;float: left">
                 <div style="width: 27px;height: 25px;float: left;">
@@ -108,17 +130,256 @@
               <div class="geng"><a href="#" style="color: #999999">更多>></a></div>
             </div>
             <div>
-              <a-list :grid="{ gutter: 16, column: 3 }" :data-source="data_1">
-                <a-list-item slot="renderItem" slot-scope="item, index">
-                  <div class="list-item">
-                    <a-list-item :description="item.description">
-                      <div slot="">
+              <div>
+                <a-list :grid="{ gutter: 34, column: 3 }" :data-source="data_1" >
+                  <a-list-item slot="renderItem" slot-scope="item, index" >
+                    <div class="list-item" :style="{width:'276px',height:'127px'}">
+                      <a-list-item-meta >
+                        <div slot="title" class="header">
+                          <img :src="item.img"  class="image" :style="{width:'119px',height:'82px',float:'left'}">
 
+                          <div style="float: right">
+                            <div class="title-text" :title="item.title" style="width: 140px;margin-bottom: 42px;">{{ item.title }}</div>
+                            <div class="footer-presenter" style="float: left">
+                              <span>主讲人：</span>
+                              <span>{{item.presenter}}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </a-list-item-meta>
+                      <div style="width: 276px;">
+                        <div class="decoration" style="width: 129px;float: left">
+                          <div>
+                            <span>教室： </span>
+                            <span>{{item.classroom}}</span>
+                          </div>
+                        </div>
+                        <div class="flex item-footer" style="width: 105px;float: right; margin-top: 5px;margin-right: 5px;">
+                          <div>
+                            <template v-if="item.isFollow" >
+                              <span><a-icon type="heart" theme="filled"/></span>
+                              <span>已关注</span>
+                            </template>
+                            <template v-else>
+                              <span><a-icon type="heart"/></span>
+                              <span>关注</span>
+                            </template>
+                          </div>
+                          <div class="title" style="margin-top: 0px">
+                            <template v-if="item.isCollected">
+                              <div class="flex collect">
+                                <a-icon type="star" theme="filled" :style="{color: '#1bcbb4'}"/>
+                                <span class="collect-text">已收藏</span>
+                              </div>
+                            </template>
+                            <template v-else>
+                              <div class="title-text title-width" :title="item.title">{{ item.title }}</div>
+                              <div class="flex collect">
+                                <a-icon type="star"/>
+                                <span class="collect-text">收藏</span>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
                       </div>
-                    </a-list-item>
+                    </div>
+                  </a-list-item>
+                </a-list>
+              </div>
+            </div>
+            <div>
+              <div style="width: 899px;height:25px; ">
+                <div style="width: 104px;height: 25px;float: left">
+                  <div style="width: 27px;height: 25px;float: left;">
+                    <img src="../assets/sheying.png" style="line-height: 25px">
                   </div>
-                </a-list-item>
-              </a-list>
+                  <div class="zhibo">点播</div>
+                </div>
+                <div class="geng"><a href="#" style="color: #999999">更多>></a></div>
+              </div>
+              <div>
+                <a-list :grid="{ gutter: 34, column: 4 }" :data-source="data_2" >
+                  <a-list-item slot="renderItem" slot-scope="item, index" class="column-space">
+                    <div class="list-item">
+                      <a-list-item-meta :description="item.description" >
+                        <div slot="title" class="header">
+                          <img :src="item.img" alt="vedio" class="image">
+                          <div class="title">
+                            <template v-if="item.isCollected">
+                              <div class="title-text" :title="item.title">{{ item.title }}</div>
+                              <div class="flex collect">
+                                <a-icon type="star" theme="filled" :style="{color: '#1bcbb4'}"/>
+                                <span class="collect-text">已收藏</span>
+                              </div>
+                            </template>
+                            <template v-else>
+                              <div class="title-text title-width" :title="item.title">{{ item.title }}</div>
+                              <div class="flex collect">
+                                <a-icon type="star"/>
+                                <span class="collect-text">收藏</span>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </a-list-item-meta>
+                      <div class="decoration">
+                        <div>
+                          <span>{{item.startTime}}</span>
+                          <span>开始</span>
+                        </div>
+                        <div>
+                          <span>教室： </span>
+                          <span>{{item.classroom}}</span>
+                        </div>
+                      </div>
+                      <div class="flex item-footer">
+                        <div class="footer-presenter">
+                          <span>主讲人：</span>
+                          <span>{{item.presenter}}</span>
+                        </div>
+                        <div>
+                          <template v-if="item.isFollow">
+                            <span><a-icon type="heart" theme="filled"/></span>
+                            <span>已关注</span>
+                          </template>
+                          <template v-else>
+                            <span><a-icon type="heart"/></span>
+                            <span>关注</span>
+                          </template>
+                        </div>
+                      </div>
+                    </div>
+                  </a-list-item>
+                </a-list>
+              </div>
+            </div>
+            <div>
+              <div style="width: 899px;height:25px; ">
+                <div style="width: 104px;height: 25px;float: left">
+                  <div style="width: 27px;height: 25px;float: left;">
+                    <img src="../assets/sheying.png" style="line-height: 25px">
+                  </div>
+                  <div class="zhibo">课件下载</div>
+                </div>
+                <div class="geng"><a href="#" style="color: #999999">更多>></a></div>
+              </div>
+              <div>
+                <a-list :grid="{ gutter: 34, column: 4 }" :data-source="data_3" >
+                  <a-list-item slot="renderItem" slot-scope="item, index" class="column-space">
+                    <div class="list-item">
+                      <a-list-item-meta :description="item.description" >
+                        <div slot="title" class="header">
+                          <img :src="item.img" alt="vedio" class="image">
+                          <div class="title">
+                            <template v-if="item.isCollected">
+                              <div class="title-text" :title="item.title">{{ item.title }}</div>
+                              <div class="flex collect">
+                                <a-icon type="star" theme="filled" :style="{color: '#1bcbb4'}"/>
+                                <span class="collect-text">已收藏</span>
+                              </div>
+                            </template>
+                            <template v-else>
+                              <div class="title-text title-width" :title="item.title">{{ item.title }}</div>
+                              <div class="flex collect">
+                                <a-icon type="star"/>
+                                <span class="collect-text">收藏</span>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </a-list-item-meta>
+                      <div class="decoration">
+                        <div>
+                          <span>{{item.startTime}}</span>
+                          <span>开始</span>
+                        </div>
+                        <div>
+                          <span>教室： </span>
+                          <span>{{item.classroom}}</span>
+                        </div>
+                      </div>
+                      <div class="flex item-footer">
+                        <div class="footer-presenter">
+                          <span>主讲人：</span>
+                          <span>{{item.presenter}}</span>
+                        </div>
+                        <div>
+                          <template >
+                            <span><a-icon type="heart" /></span>
+                            <span>下载</span>
+                          </template>
+                        </div>
+                      </div>
+                    </div>
+                  </a-list-item>
+                </a-list>
+              </div>
+            </div>
+            <div>
+              <div style="width: 899px;height:25px; ">
+                <div style="width: 104px;height: 25px;float: left">
+                  <div style="width: 27px;height: 25px;float: left;">
+                    <img src="../assets/sheying.png" style="line-height: 25px">
+                  </div>
+                  <div class="zhibo">课程评比</div>
+                </div>
+                <div class="geng"><a href="#" style="color: #999999">更多>></a></div>
+              </div>
+              <div>
+                <a-list :grid="{ gutter: 34, column: 4 }" :data-source="data_4" >
+                  <a-list-item slot="renderItem" slot-scope="item, index" class="column-space">
+                    <div class="list-item">
+                      <a-list-item-meta :description="item.description" >
+                        <div slot="title" class="header">
+                          <img :src="item.img" alt="vedio" class="image">
+                          <div class="title">
+                            <template v-if="item.isCollected">
+                              <div class="title-text" :title="item.title">{{ item.title }}</div>
+                              <div class="flex collect">
+                                <a-icon type="star" theme="filled" :style="{color: '#1bcbb4'}"/>
+                                <span class="collect-text">已收藏</span>
+                              </div>
+                            </template>
+                            <template v-else>
+                              <div class="title-text title-width" :title="item.title">{{ item.title }}</div>
+                              <div class="flex collect">
+                                <a-icon type="star"/>
+                                <span class="collect-text">收藏</span>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </a-list-item-meta>
+                      <div class="decoration">
+                        <div>
+                          <span>{{item.startTime}}</span>
+                          <span>开始</span>
+                        </div>
+                        <div>
+                          <span>教室： </span>
+                          <span>{{item.classroom}}</span>
+                        </div>
+                      </div>
+                      <div class="flex item-footer">
+                        <div class="footer-presenter">
+                          <span>主讲人：</span>
+                          <span>{{item.presenter}}</span>
+                        </div>
+                        <div>
+                          <template v-if="item.isFollow">
+                            <span><a-icon type="heart" theme="filled"/></span>
+                            <span>已关注</span>
+                          </template>
+                          <template v-else>
+                            <span><a-icon type="heart"/></span>
+                            <span>关注</span>
+                          </template>
+                        </div>
+                      </div>
+                    </div>
+                  </a-list-item>
+                </a-list>
+              </div>
             </div>
 
           </a-layout-content>
@@ -134,9 +395,12 @@
 <script>
 import HeaderBar from "../components/HeaderBar";
 import SlideShow from "../components/SlideShow";
-const listData = [];
+
 const data = [];
 const data_1=[];
+const data_2=[];
+const data_3=[];
+const data_4=[];
 
 for (let i = 0; i < 8; i++) {
   data.push({
@@ -160,6 +424,39 @@ data_1.push({
   isFollow: false,
   });
 }
+for (let i=0;i<4;i++){
+  data_2.push({
+    title: `理财公益免费VIP直播课程`,
+    img: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
+    isCollected: true,
+    startTime: '5月10日 16：00',
+    classroom: '明德楼 A201',
+    presenter: '李丽',
+    isFollow: false,
+  });
+}
+for (let i=0;i<4;i++){
+  data_3.push({
+    title: `理财公益免费VIP直播课程`,
+    img: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
+    isCollected: true,
+    startTime: '5月10日 16：00',
+    classroom: '明德楼 A301',
+    presenter: '李丽',
+    isFollow: false,
+  });
+}
+for (let i=0;i<4;i++){
+  data_4.push({
+    title: `理财公益免费VIP直播课程`,
+    img: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
+    isCollected: true,
+    startTime: '5月10日 16：00',
+    classroom: '明德楼 A401',
+    presenter: '李丽',
+    isFollow: false,
+  });
+}
 export default {
   name: "Index.vue",
   components: {
@@ -169,26 +466,14 @@ export default {
   data() {
     return {
       current: ['all'],
-      listData,
       data,
       data_1,
+      data_2,
+      data_3,
+      data_4,
     }
   },
-  // computed: {
-  //   rowSelection() {
-  //     return {
-  //       // onChange: (selectedRowKeys, selectedRows) => {
-  //       //   console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-  //       // },
-  //       getCheckboxProps: record => ({
-  //         props: {
-  //           disabled: record.name === 'Disabled User', // Column configuration not to be checked
-  //           name: record.name,
-  //         },
-  //       }),
-  //     };
-  //   },
-  // },
+
   methods: {
     selectStyle(){
 
@@ -299,7 +584,7 @@ export default {
   font-size: 15px;
   font-weight: 600;
   color: #222222;
-  width: 152px;
+  width: 130px;
   text-align: left;
   overflow: hidden;
   white-space: nowrap;
