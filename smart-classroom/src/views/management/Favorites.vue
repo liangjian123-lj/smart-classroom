@@ -250,6 +250,10 @@
     padding: 5px;
     cursor: pointer;
   }
+  .list-item:hover{
+    border: solid 1px #1bcbb4;
+    box-shadow: 2px 2px 20px #dddddd;
+  }
   .decoration{
     font-size: 12px;
     color: #666666;
