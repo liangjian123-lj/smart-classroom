@@ -386,14 +386,16 @@
         </a-layout>
         <a-layout-sider>Sider</a-layout-sider>
       </a-layout>
-      <a-layout-footer>Footer</a-layout-footer>
-
+      <a-layout-footer>
+        <index-footer></index-footer>
+      </a-layout-footer>
     </div>
   </div>
 </template>
 
 <script>
 import IndexHeader from "../components/IndexHeader";
+import IndexFooter from "../components/IndexFooter";
 import SlideShow from "../components/SlideShow";
 
 const data = [];
@@ -461,7 +463,8 @@ export default {
   name: "Index.vue",
   components: {
     SlideShow,
-    IndexHeader
+    IndexHeader,
+    IndexFooter
   },
   data() {
     return {
@@ -487,13 +490,13 @@ export default {
   margin-top:20px;
 }
 #components-layout-demo-basic {
-
   text-align: center;
 }
 #components-layout-demo-basic .ant-layout-header,
 #components-layout-demo-basic .ant-layout-footer {
-  background: #7dbcea;
+  background: #262f38;
   color: #fff;
+  padding: 0px;
 }
 #components-layout-demo-basic .ant-layout-footer {
   line-height: 1.5;
