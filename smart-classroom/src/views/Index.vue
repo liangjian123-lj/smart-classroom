@@ -5,10 +5,10 @@
       <slide-show></slide-show>
     </div>
     <div id="components-layout-demo-basic" :style="{marginTop:'19px'}">
-      <a-layout :style="{width:'1180px',margin:'0 auto',}">
+      <a-layout :style="{width:'1280px',margin:'0 auto',}">
         <a-layout>
-          <a-layout-header :style="{width:'900px',height:'50px',padding:'0px'}">
-            <a-menu v-model="current" mode="horizontal" :style="{width: '900px',height:'50px',lineHeight:'50px',border:'1px solid #eeeeee',borderRadius:'4px', }">
+          <a-layout-header :style="{width:'1000px',height:'50px',padding:'0px'}">
+            <a-menu v-model="current" mode="horizontal" :style="{width: '1000px',height:'50px',lineHeight:'50px',border:'1px solid #eeeeee',borderRadius:'4px', }">
               <a-menu-item key="all" :style="{marginRight:'50px'}">
                 <a href="#" target="_blank" rel="noopener noreferrer">全部</a>
               </a-menu-item>
@@ -29,8 +29,8 @@
               </a-menu-item>
             </a-menu>
           </a-layout-header>
-          <a-layout-content :style="{marginRight:'20px',marginTop: '34px',width:'899px',lineHeight: normal }">
-            <div style="width: 899px;height:25px; ">
+          <a-layout-content :style="{marginRight:'20px',marginTop: '34px',width:'1000px',lineHeight: normal }">
+            <div style="width: 1000px;height:25px; ">
               <div style="width: 104px;height: 25px;float: left">
                 <div style="width: 27px;height: 25px;float: left;">
                   <img src="../assets/sheying.png" style="line-height: 25px">
@@ -39,9 +39,6 @@
               </div>
               <div class="geng"><a href="#" style="color: #999999">更多>></a></div>
             </div>
-
-
-
             <div>
               <a-list :grid="{ gutter: 34, column: 4 }" :data-source="data" :pagination="pagination">
                 <a-list-item slot="renderItem" slot-scope="item, index" class="column-space">
@@ -97,30 +94,7 @@
                 </a-list-item>
               </a-list>
             </div>
-
-<!--            <div style="width: 899px;height:25px; ">-->
-<!--              <div style="width: 104px;height: 25px;float: left">-->
-<!--                <div style="width: 27px;height: 25px;float: left;">-->
-<!--                  <img src="../assets/sheying.png" style="line-height: 25px">-->
-<!--                </div>-->
-<!--                <div class="zhibo">直播</div>-->
-<!--              </div>-->
-<!--              <div class="geng"><a href="#" style="color: #999999">更多>></a></div>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <a-list :grid="{ gutter: 16, column: 3 }" :data-source="data_1">-->
-<!--                <a-list-item slot="renderItem" slot-scope="item, index">-->
-<!--                  <div class="list-item">-->
-<!--                    <a-list-item :description="item.description">-->
-<!--                      <div slot="">-->
-
-<!--                      </div>-->
-<!--                    </a-list-item>-->
-<!--                  </div>-->
-<!--                </a-list-item>-->
-<!--              </a-list>-->
-<!--            </div>-->
-            <div style="width: 899px;height:25px; ">
+            <div style="width: 1000px;height:25px; ">
               <div style="width: 104px;height: 25px;float: left">
                 <div style="width: 27px;height: 25px;float: left;">
                   <img src="../assets/sheying.png" style="line-height: 25px">
@@ -188,7 +162,7 @@
               </div>
             </div>
             <div>
-              <div style="width: 899px;height:25px; ">
+              <div style="width: 1000px;height:25px; ">
                 <div style="width: 104px;height: 25px;float: left">
                   <div style="width: 27px;height: 25px;float: left;">
                     <img src="../assets/sheying.png" style="line-height: 25px">
@@ -254,7 +228,7 @@
               </div>
             </div>
             <div>
-              <div style="width: 899px;height:25px; ">
+              <div style="width: 1000px;height:25px; ">
                 <div style="width: 104px;height: 25px;float: left">
                   <div style="width: 27px;height: 25px;float: left;">
                     <img src="../assets/sheying.png" style="line-height: 25px">
@@ -316,7 +290,7 @@
               </div>
             </div>
             <div>
-              <div style="width: 899px;height:25px; ">
+              <div style="width: 1000px;height:25px; ">
                 <div style="width: 104px;height: 25px;float: left">
                   <div style="width: 27px;height: 25px;float: left;">
                     <img src="../assets/sheying.png" style="line-height: 25px">
@@ -384,7 +358,7 @@
 
           </a-layout-content>
         </a-layout>
-        <a-layout-sider>Sider</a-layout-sider>
+        <a-layout-sider :style="{maxWidth:'250px',minWidth:'250px',width:'250px'}">Sider</a-layout-sider>
       </a-layout>
       <a-layout-footer>
         <index-footer></index-footer>

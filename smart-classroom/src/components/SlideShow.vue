@@ -1,5 +1,5 @@
 <template >
-  <a-carousel autoplay :style="{width:'1180px',height:'160px',margin:'0 auto'}">
+  <a-carousel autoplay :style="{width:'1280px',height:'160px',margin:'0 auto'}">
     <template v-for="(item,index) in imgList">
       <div ><img :src="item.src" :alt="item.name" class="img"></div>
     </template>
