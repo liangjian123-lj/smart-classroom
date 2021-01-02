@@ -1,0 +1,429 @@
+Index: smart-classroom/src/views/Index.vue
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><template>\r\n  <div>\r\n    <header-bar></header-bar>\r\n    <div class=\"banner\" >\r\n      <slide-show></slide-show>\r\n    </div>\r\n    <div id=\"components-layout-demo-basic\" :style=\"{marginTop:'19px'}\">\r\n      <a-layout :style=\"{width:'1180px',margin:'0 auto',}\">\r\n        <a-layout>\r\n          <a-layout-header :style=\"{width:'900px',height:'50px',padding:'0px'}\">\r\n            <a-menu v-model=\"current\" mode=\"horizontal\" :style=\"{width: '900px',height:'50px',lineHeight:'50px',border:'1px solid #eeeeee',borderRadius:'4px', }\">\r\n              <a-menu-item key=\"all\" :style=\"{marginRight:'50px'}\">\r\n                <a href=\"#\" target=\"_blank\" rel=\"noopener noreferrer\">全部</a>\r\n              </a-menu-item>\r\n              <a-menu-item key=\"live\" :style=\"{marginRight:'50px'}\">\r\n                <a href=\"#\" target=\"_blank\" rel=\"noopener noreferrer\">直播</a>\r\n              </a-menu-item>\r\n              <a-menu-item key=\"preview\" :style=\"{marginRight:'50px'}\">\r\n                <a href=\"#\" target=\"_blank\" rel=\"noopener noreferrer\">直播预告</a>\r\n              </a-menu-item>\r\n              <a-menu-item key=\"spaced \" :style=\"{marginRight:'50px'}\">\r\n                <a href=\"#\" target=\"_blank\" rel=\"noopener noreferrer\">点播</a>\r\n              </a-menu-item>\r\n              <a-menu-item key=\"curriculum \" :style=\"{marginRight:'50px'}\">\r\n                <a href=\"#\" target=\"_blank\" rel=\"noopener noreferrer\">课程评比</a>\r\n              </a-menu-item>\r\n              <a-menu-item key=\"download\" :style=\"{marginRight:'50px'}\">\r\n                <a href=\"#\" target=\"_blank\" rel=\"noopener noreferrer\">课件下载</a>\r\n              </a-menu-item>\r\n            </a-menu>\r\n          </a-layout-header>\r\n          <a-layout-content :style=\"{marginRight:'20px',marginTop: '34px',width:'899px',lineHeight: normal }\">\r\n            <div style=\"width: 899px;height:25px; \">\r\n              <div style=\"width: 104px;height: 25px;float: left\">\r\n                <div style=\"width: 27px;height: 25px;float: left;\">\r\n                  <img src=\"../assets/sheying.png\" style=\"line-height: 25px\">\r\n                </div>\r\n                <div class=\"zhibo\">直播预告</div>\r\n              </div>\r\n              <div class=\"geng\"><a href=\"#\" style=\"color: #999999\">更多>></a></div>\r\n            </div>\r\n\r\n\r\n\r\n            <div>\r\n              <a-list :grid=\"{ gutter: 34, column: 4 }\" :data-source=\"data\" :pagination=\"pagination\">\r\n                <a-list-item slot=\"renderItem\" slot-scope=\"item, index\" class=\"column-space\">\r\n                  <div class=\"list-item\">\r\n                    <a-list-item-meta :description=\"item.description\" >\r\n                      <div slot=\"title\" class=\"header\">\r\n                        <img :src=\"item.img\" alt=\"vedio\" class=\"image\">\r\n                        <div class=\"title\">\r\n                          <template v-if=\"item.isCollected\">\r\n                            <div class=\"title-text\" :title=\"item.title\">{{ item.title }}</div>\r\n                            <div class=\"flex collect\">\r\n                              <a-icon type=\"star\" theme=\"filled\" :style=\"{color: '#1bcbb4'}\"/>\r\n                              <span class=\"collect-text\">已收藏</span>\r\n                            </div>\r\n                          </template>\r\n                          <template v-else>\r\n                            <div class=\"title-text title-width\" :title=\"item.title\">{{ item.title }}</div>\r\n                            <div class=\"flex collect\">\r\n                              <a-icon type=\"star\"/>\r\n                              <span class=\"collect-text\">收藏</span>\r\n                            </div>\r\n                          </template>\r\n                        </div>\r\n                      </div>\r\n                    </a-list-item-meta>\r\n                    <div class=\"decoration\">\r\n                      <div>\r\n                        <span>{{item.startTime}}</span>\r\n                        <span>开始</span>\r\n                      </div>\r\n                      <div>\r\n                        <span>教室： </span>\r\n                        <span>{{item.startTime}}</span>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"flex item-footer\">\r\n                      <div class=\"footer-presenter\">\r\n                        <span>主讲人：</span>\r\n                        <span>{{item.presenter}}</span>\r\n                      </div>\r\n                      <div>\r\n                        <template v-if=\"item.isFollow\">\r\n                          <span><a-icon type=\"heart\" theme=\"filled\"/></span>\r\n                          <span>已关注</span>\r\n                        </template>\r\n                        <template v-else>\r\n                          <span><a-icon type=\"heart\"/></span>\r\n                          <span>关注</span>\r\n                        </template>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </a-list-item>\r\n              </a-list>\r\n            </div>\r\n\r\n            <div style=\"width: 899px;height:25px; \">\r\n              <div style=\"width: 104px;height: 25px;float: left\">\r\n                <div style=\"width: 27px;height: 25px;float: left;\">\r\n                  <img src=\"../assets/sheying.png\" style=\"line-height: 25px\">\r\n                </div>\r\n                <div class=\"zhibo\">直播</div>\r\n              </div>\r\n              <div class=\"geng\"><a href=\"#\" style=\"color: #999999\">更多>></a></div>\r\n            </div>\r\n            <div>\r\n              <a-list :grid=\"{ gutter: 16, column: 3 }\" :data-source=\"data_1\">\r\n                <a-list-item slot=\"renderItem\" slot-scope=\"item, index\">\r\n                  <div class=\"list-item\">\r\n                    <a-list-item :description=\"item.description\">\r\n                      <div slot=\"\">\r\n\r\n                      </div>\r\n                    </a-list-item>\r\n                  </div>\r\n                </a-list-item>\r\n              </a-list>\r\n            </div>\r\n\r\n          </a-layout-content>\r\n        </a-layout>\r\n        <a-layout-sider>Sider</a-layout-sider>\r\n      </a-layout>\r\n      <a-layout-footer>Footer</a-layout-footer>\r\n\r\n    </div>\r\n  </div>\r\n</template>\r\n\r\n<script>\r\nimport HeaderBar from \"../components/HeaderBar\";\r\nimport SlideShow from \"../components/SlideShow\";\r\nconst listData = [];\r\nconst data = [];\r\nconst data_1=[];\r\n\r\nfor (let i = 0; i < 8; i++) {\r\n  data.push({\r\n    title: `理财公益免费VIP直播课程`,\r\n    img: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',\r\n    isCollected: true,\r\n    startTime: '5月26日 22：00',\r\n    classroom: '明德楼 A101',\r\n    presenter: '李丽',\r\n    isFollow: false,\r\n  });\r\n}\r\nfor (let i=0;i<3;i++){\r\ndata_1.push({\r\n  title: `理财公益免费VIP直播课程`,\r\n  img: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',\r\n  isCollected: true,\r\n  startTime: '5月26日 22：00',\r\n  classroom: '明德楼 A101',\r\n  presenter: '李丽',\r\n  isFollow: false,\r\n  });\r\n}\r\nexport default {\r\n  name: \"Index.vue\",\r\n  components: {\r\n    SlideShow,\r\n    HeaderBar\r\n  },\r\n  data() {\r\n    return {\r\n      current: ['all'],\r\n      listData,\r\n      data,\r\n      data_1,\r\n    }\r\n  },\r\n  // computed: {\r\n  //   rowSelection() {\r\n  //     return {\r\n  //       // onChange: (selectedRowKeys, selectedRows) => {\r\n  //       //   console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);\r\n  //       // },\r\n  //       getCheckboxProps: record => ({\r\n  //         props: {\r\n  //           disabled: record.name === 'Disabled User', // Column configuration not to be checked\r\n  //           name: record.name,\r\n  //         },\r\n  //       }),\r\n  //     };\r\n  //   },\r\n  // },\r\n  methods: {\r\n    selectStyle(){\r\n\r\n    }\r\n  }\r\n}\r\n</script>\r\n\r\n<style lang=\"less\" scoped>\r\n.banner{\r\n  margin-top:20px;\r\n}\r\n#components-layout-demo-basic {\r\n\r\n  text-align: center;\r\n}\r\n#components-layout-demo-basic .ant-layout-header,\r\n#components-layout-demo-basic .ant-layout-footer {\r\n  background: #7dbcea;\r\n  color: #fff;\r\n}\r\n#components-layout-demo-basic .ant-layout-footer {\r\n  line-height: 1.5;\r\n}\r\n#components-layout-demo-basic .ant-layout-sider {\r\n  background: #3ba0e9;\r\n  color: #fff;\r\n  line-height: 120px;\r\n}\r\n#components-layout-demo-basic .ant-layout-content {\r\n  /*background: rgba(16, 142, 233, 1);*/\r\n  color: #fff;\r\n  min-height: 120px;\r\n  /*line-height: 120px;*/\r\n}\r\n#components-layout-demo-basic > .ant-layout {\r\n  margin-bottom: 48px;\r\n}\r\n#components-layout-demo-basic > .ant-layout:last-child {\r\n  margin: 0;\r\n}\r\n.zhibo{\r\n  width: 77px;\r\n  height: 25px;\r\n  font-family: MicrosoftYaHei;\r\n  font-size: 10px;\r\n  font-weight: bold;\r\n  font-stretch: normal;\r\n  line-height: 25px;\r\n  letter-spacing: 1px;\r\n  color: #333333;\r\n\r\n}\r\n.geng{\r\n  width: 43px;\r\n  height: 12px;\r\n  font-family: MicrosoftYaHei;\r\n  font-size: 10px;\r\n  font-weight: normal;\r\n  font-stretch: normal;\r\n  line-height: 12px;\r\n  letter-spacing: 1px;\r\n  color: #999999;\r\n  float: right;\r\n}\r\n.flex{\r\n  display: flex;\r\n  flex-direction: row;\r\n}\r\n.container{\r\n  width: 1032px;\r\n  height: 100%;\r\n  background-color: #ffffff;\r\n  border-radius: 4px;\r\n  border: 1px solid #eeeeee;\r\n  padding: 5px 13px;\r\n}\r\n.contain-header{\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n.contain-title{\r\n  font-family: MicrosoftYaHei;\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n  font-stretch: normal;\r\n  letter-spacing: 1px;\r\n  color: #1bcbb4;\r\n  margin-top: 10px;\r\n}\r\n.tag-page{\r\n  margin-top: 30px;\r\n  text-align: left;\r\n}\r\n.avatar{\r\n  border: 2px solid #1bcbb4;\r\n  width: 80px;\r\n  height: 80px;\r\n}\r\n.title{\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\r\n  margin-top: 5px;\r\n}\r\n.title-text{\r\n  font-family: MicrosoftYaHei;\r\n  font-size: 15px;\r\n  font-weight: 600;\r\n  color: #222222;\r\n  width: 152px;\r\n  text-align: left;\r\n  overflow: hidden;\r\n  white-space: nowrap;\r\n  text-overflow: ellipsis;\r\n}\r\n.title-width{\r\n  width: 170px;\r\n}\r\n.collect{\r\n  align-items: center;\r\n}\r\n.collect-text{\r\n  font-family: MicrosoftYaHei;\r\n  font-size: 12px;\r\n  color: #666666;\r\n  margin-left: 5px;\r\n}\r\n.item-footer{\r\n  font-family: MicrosoftYaHei;\r\n  font-size: 12px;\r\n  color: #666666;\r\n  border-top: 1px dashed #eaeaea;\r\n  justify-content: space-between;\r\n  padding: 5px;\r\n}\r\n\r\n.course{\r\n  font-family: MicrosoftYaHei;\r\n  font-size: 12px;\r\n  color: #999999;\r\n  margin-left: 15px;\r\n  margin-right: 15px;\r\n}\r\n.followed{\r\n  margin-left: 98px;\r\n  margin-top: -10px;\r\n}\r\n.image{\r\n  width: 100%;\r\n  /*height: 128px;*/\r\n}\r\n.more{\r\n  display: inline-block;\r\n  font-size: 13px;\r\n  cursor: pointer;\r\n}\r\n.more-list{\r\n  margin-top: -10px;\r\n  margin-bottom: 5px;\r\n  text-align: right;\r\n}\r\n.more:hover{\r\n  color: #1bcbb4;\r\n}\r\n.column-space{\r\n  margin-top: 12px;\r\n}\r\n.list-item{\r\n  border-radius: 4px;\r\n  border: solid 1px #eeeeee;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n}\r\n.decoration{\r\n  font-size: 12px;\r\n  color: #666666;\r\n  text-align: left;\r\n  margin-top: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n.footer-presenter{\r\n  color: #222222;\r\n  font-weight: 600;\r\n}\r\n\r\n/* 覆盖默认的ant样式 */\r\n.tag-vedio{\r\n:global(.ant-tabs-nav .ant-tabs-tab){\r\n  font-family: MicrosoftYaHei;\r\n  font-size: 17px;\r\n  padding: 8px 1px;\r\n  font-weight: 500;\r\n}\r\n:global(.ant-tabs-ink-bar){\r\n  height: 4px;\r\n}\r\n}\r\n\r\n</style>\r\n\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/smart-classroom/src/views/Index.vue b/smart-classroom/src/views/Index.vue
+--- a/smart-classroom/src/views/Index.vue	(revision 52dc0b2983df478069eaddb80729c92232f97807)
++++ b/smart-classroom/src/views/Index.vue	(date 1609579964064)
+@@ -39,9 +39,6 @@
+               </div>
+               <div class="geng"><a href="#" style="color: #999999">更多>></a></div>
+             </div>
+-
+-
+-
+             <div>
+               <a-list :grid="{ gutter: 34, column: 4 }" :data-source="data" :pagination="pagination">
+                 <a-list-item slot="renderItem" slot-scope="item, index" class="column-space">
+@@ -74,7 +71,7 @@
+                       </div>
+                       <div>
+                         <span>教室： </span>
+-                        <span>{{item.startTime}}</span>
++                        <span>{{item.classroom}}</span>
+                       </div>
+                     </div>
+                     <div class="flex item-footer">
+@@ -97,7 +94,6 @@
+                 </a-list-item>
+               </a-list>
+             </div>
+-
+             <div style="width: 899px;height:25px; ">
+               <div style="width: 104px;height: 25px;float: left">
+                 <div style="width: 27px;height: 25px;float: left;">
+@@ -108,19 +104,257 @@
+               <div class="geng"><a href="#" style="color: #999999">更多>></a></div>
+             </div>
+             <div>
+-              <a-list :grid="{ gutter: 16, column: 3 }" :data-source="data_1">
+-                <a-list-item slot="renderItem" slot-scope="item, index">
+-                  <div class="list-item">
+-                    <a-list-item :description="item.description">
+-                      <div slot="">
+-
+-                      </div>
+-                    </a-list-item>
+-                  </div>
+-                </a-list-item>
+-              </a-list>
+-            </div>
+-
++              <div>
++                <a-list :grid="{ gutter: 34, column: 3 }" :data-source="data_1" >
++                  <a-list-item slot="renderItem" slot-scope="item, index" >
++                    <div class="list-item" :style="{width:'276px',height:'127px'}">
++                      <a-list-item-meta >
++                        <div slot="title" class="header">
++                          <img :src="item.img"  class="image" :style="{width:'119px',height:'82px',float:'left'}">
++
++                          <div style="float: right">
++                            <div class="title-text" :title="item.title" style="width: 140px;margin-bottom: 42px;">{{ item.title }}</div>
++                            <div class="footer-presenter" style="float: left">
++                              <span>主讲人：</span>
++                              <span>{{item.presenter}}</span>
++                            </div>
++                          </div>
++                        </div>
++                      </a-list-item-meta>
++                      <div style="width: 276px;">
++                        <div class="decoration" style="width: 129px;float: left">
++                          <div>
++                            <span>教室： </span>
++                            <span>{{item.classroom}}</span>
++                          </div>
++                        </div>
++                        <div class="flex item-footer" style="width: 105px;float: right; margin-top: 5px;margin-right: 5px;">
++                          <div>
++                            <template v-if="item.isFollow" >
++                              <span><a-icon type="heart" theme="filled"/></span>
++                              <span>已关注</span>
++                            </template>
++                            <template v-else>
++                              <span><a-icon type="heart"/></span>
++                              <span>关注</span>
++                            </template>
++                          </div>
++                          <div class="title" style="margin-top: 0px">
++                            <template v-if="item.isCollected">
++                              <div class="flex collect">
++                                <a-icon type="star" theme="filled" :style="{color: '#1bcbb4'}"/>
++                                <span class="collect-text">已收藏</span>
++                              </div>
++                            </template>
++                            <template v-else>
++                              <div class="title-text title-width" :title="item.title">{{ item.title }}</div>
++                              <div class="flex collect">
++                                <a-icon type="star"/>
++                                <span class="collect-text">收藏</span>
++                              </div>
++                            </template>
++                          </div>
++                        </div>
++                      </div>
++                    </div>
++                  </a-list-item>
++                </a-list>
++              </div>
++            </div>
++            <div>
++              <div style="width: 899px;height:25px; ">
++                <div style="width: 104px;height: 25px;float: left">
++                  <div style="width: 27px;height: 25px;float: left;">
++                    <img src="../assets/sheying.png" style="line-height: 25px">
++                  </div>
++                  <div class="zhibo">点播</div>
++                </div>
++                <div class="geng"><a href="#" style="color: #999999">更多>></a></div>
++              </div>
++              <div>
++                <a-list :grid="{ gutter: 34, column: 4 }" :data-source="data_2" >
++                  <a-list-item slot="renderItem" slot-scope="item, index" class="column-space">
++                    <div class="list-item">
++                      <a-list-item-meta :description="item.description" >
++                        <div slot="title" class="header">
++                          <img :src="item.img" alt="vedio" class="image">
++                          <div class="title">
++                            <template v-if="item.isCollected">
++                              <div class="title-text" :title="item.title">{{ item.title }}</div>
++                              <div class="flex collect">
++                                <a-icon type="star" theme="filled" :style="{color: '#1bcbb4'}"/>
++                                <span class="collect-text">已收藏</span>
++                              </div>
++                            </template>
++                            <template v-else>
++                              <div class="title-text title-width" :title="item.title">{{ item.title }}</div>
++                              <div class="flex collect">
++                                <a-icon type="star"/>
++                                <span class="collect-text">收藏</span>
++                              </div>
++                            </template>
++                          </div>
++                        </div>
++                      </a-list-item-meta>
++                      <div class="decoration">
++                        <div>
++                          <span>{{item.startTime}}</span>
++                          <span>开始</span>
++                        </div>
++                        <div>
++                          <span>教室： </span>
++                          <span>{{item.classroom}}</span>
++                        </div>
++                      </div>
++                      <div class="flex item-footer">
++                        <div class="footer-presenter">
++                          <span>主讲人：</span>
++                          <span>{{item.presenter}}</span>
++                        </div>
++                        <div>
++                          <template v-if="item.isFollow">
++                            <span><a-icon type="heart" theme="filled"/></span>
++                            <span>已关注</span>
++                          </template>
++                          <template v-else>
++                            <span><a-icon type="heart"/></span>
++                            <span>关注</span>
++                          </template>
++                        </div>
++                      </div>
++                    </div>
++                  </a-list-item>
++                </a-list>
++              </div>
++            </div>
++            <div>
++              <div style="width: 899px;height:25px; ">
++                <div style="width: 104px;height: 25px;float: left">
++                  <div style="width: 27px;height: 25px;float: left;">
++                    <img src="../assets/sheying.png" style="line-height: 25px">
++                  </div>
++                  <div class="zhibo">课件下载</div>
++                </div>
++                <div class="geng"><a href="#" style="color: #999999">更多>></a></div>
++              </div>
++              <div>
++                <a-list :grid="{ gutter: 34, column: 4 }" :data-source="data_3" >
++                  <a-list-item slot="renderItem" slot-scope="item, index" class="column-space">
++                    <div class="list-item">
++                      <a-list-item-meta :description="item.description" >
++                        <div slot="title" class="header">
++                          <img :src="item.img" alt="vedio" class="image">
++                          <div class="title">
++                            <template v-if="item.isCollected">
++                              <div class="title-text" :title="item.title">{{ item.title }}</div>
++                              <div class="flex collect">
++                                <a-icon type="star" theme="filled" :style="{color: '#1bcbb4'}"/>
++                                <span class="collect-text">已收藏</span>
++                              </div>
++                            </template>
++                            <template v-else>
++                              <div class="title-text title-width" :title="item.title">{{ item.title }}</div>
++                              <div class="flex collect">
++                                <a-icon type="star"/>
++                                <span class="collect-text">收藏</span>
++                              </div>
++                            </template>
++                          </div>
++                        </div>
++                      </a-list-item-meta>
++                      <div class="decoration">
++                        <div>
++                          <span>{{item.startTime}}</span>
++                          <span>开始</span>
++                        </div>
++                        <div>
++                          <span>教室： </span>
++                          <span>{{item.classroom}}</span>
++                        </div>
++                      </div>
++                      <div class="flex item-footer">
++                        <div class="footer-presenter">
++                          <span>主讲人：</span>
++                          <span>{{item.presenter}}</span>
++                        </div>
++                        <div>
++                          <template >
++                            <span><a-icon type="heart" /></span>
++                            <span>下载</span>
++                          </template>
++                        </div>
++                      </div>
++                    </div>
++                  </a-list-item>
++                </a-list>
++              </div>
++            </div>
++            <div>
++              <div style="width: 899px;height:25px; ">
++                <div style="width: 104px;height: 25px;float: left">
++                  <div style="width: 27px;height: 25px;float: left;">
++                    <img src="../assets/sheying.png" style="line-height: 25px">
++                  </div>
++                  <div class="zhibo">课程评比</div>
++                </div>
++                <div class="geng"><a href="#" style="color: #999999">更多>></a></div>
++              </div>
++              <div>
++                <a-list :grid="{ gutter: 34, column: 4 }" :data-source="data_4" >
++                  <a-list-item slot="renderItem" slot-scope="item, index" class="column-space">
++                    <div class="list-item">
++                      <a-list-item-meta :description="item.description" >
++                        <div slot="title" class="header">
++                          <img :src="item.img" alt="vedio" class="image">
++                          <div class="title">
++                            <template v-if="item.isCollected">
++                              <div class="title-text" :title="item.title">{{ item.title }}</div>
++                              <div class="flex collect">
++                                <a-icon type="star" theme="filled" :style="{color: '#1bcbb4'}"/>
++                                <span class="collect-text">已收藏</span>
++                              </div>
++                            </template>
++                            <template v-else>
++                              <div class="title-text title-width" :title="item.title">{{ item.title }}</div>
++                              <div class="flex collect">
++                                <a-icon type="star"/>
++                                <span class="collect-text">收藏</span>
++                              </div>
++                            </template>
++                          </div>
++                        </div>
++                      </a-list-item-meta>
++                      <div class="decoration">
++                        <div>
++                          <span>{{item.startTime}}</span>
++                          <span>开始</span>
++                        </div>
++                        <div>
++                          <span>教室： </span>
++                          <span>{{item.classroom}}</span>
++                        </div>
++                      </div>
++                      <div class="flex item-footer">
++                        <div class="footer-presenter">
++                          <span>主讲人：</span>
++                          <span>{{item.presenter}}</span>
++                        </div>
++                        <div>
++                          <template v-if="item.isFollow">
++                            <span><a-icon type="heart" theme="filled"/></span>
++                            <span>已关注</span>
++                          </template>
++                          <template v-else>
++                            <span><a-icon type="heart"/></span>
++                            <span>关注</span>
++                          </template>
++                        </div>
++                      </div>
++                    </div>
++                  </a-list-item>
++                </a-list>
++              </div>
++            </div>
+           </a-layout-content>
+         </a-layout>
+         <a-layout-sider>Sider</a-layout-sider>
+@@ -134,9 +368,12 @@
+ <script>
+ import HeaderBar from "../components/HeaderBar";
+ import SlideShow from "../components/SlideShow";
+-const listData = [];
++// const listData = [];
+ const data = [];
+ const data_1=[];
++const data_2=[];
++const data_3=[];
++const data_4=[];
+ 
+ for (let i = 0; i < 8; i++) {
+   data.push({
+@@ -154,12 +391,45 @@
+   title: `理财公益免费VIP直播课程`,
+   img: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
+   isCollected: true,
+-  startTime: '5月26日 22：00',
++  startTime: '5月10日 16：00',
+   classroom: '明德楼 A101',
+   presenter: '李丽',
+   isFollow: false,
+   });
+ }
++for (let i=0;i<4;i++){
++  data_2.push({
++    title: `理财公益免费VIP直播课程`,
++    img: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
++    isCollected: true,
++    startTime: '5月10日 16：00',
++    classroom: '明德楼 A201',
++    presenter: '李丽',
++    isFollow: false,
++  });
++}
++for (let i=0;i<4;i++){
++  data_3.push({
++    title: `理财公益免费VIP直播课程`,
++    img: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
++    isCollected: true,
++    startTime: '5月10日 16：00',
++    classroom: '明德楼 A301',
++    presenter: '李丽',
++    isFollow: false,
++  });
++}
++for (let i=0;i<4;i++){
++  data_4.push({
++    title: `理财公益免费VIP直播课程`,
++    img: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
++    isCollected: true,
++    startTime: '5月10日 16：00',
++    classroom: '明德楼 A401',
++    presenter: '李丽',
++    isFollow: false,
++  });
++}
+ export default {
+   name: "Index.vue",
+   components: {
+@@ -169,26 +439,15 @@
+   data() {
+     return {
+       current: ['all'],
+-      listData,
++      // listData,
+       data,
+       data_1,
++      data_2,
++      data_3,
++      data_4,
+     }
+   },
+-  // computed: {
+-  //   rowSelection() {
+-  //     return {
+-  //       // onChange: (selectedRowKeys, selectedRows) => {
+-  //       //   console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+-  //       // },
+-  //       getCheckboxProps: record => ({
+-  //         props: {
+-  //           disabled: record.name === 'Disabled User', // Column configuration not to be checked
+-  //           name: record.name,
+-  //         },
+-  //       }),
+-  //     };
+-  //   },
+-  // },
++
+   methods: {
+     selectStyle(){
+ 
+@@ -299,7 +558,7 @@
+   font-size: 15px;
+   font-weight: 600;
+   color: #222222;
+-  width: 152px;
++  width: 130px;
+   text-align: left;
+   overflow: hidden;
+   white-space: nowrap;
+Index: smart-classroom/src/views/management/Favorites.vue
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><template>\r\n  <div class=\"container\">\r\n    <!--  主题内容标题   -->\r\n    <div class=\"flex contain-header\">\r\n      <div class=\"contain-title\">我的收藏</div>\r\n    </div>\r\n\r\n    <!--  表格头部标签页  -->\r\n    <div class=\"tag-vedio\">\r\n      <a-tabs default-active-key=\"1\" @change=\"callback\">\r\n        <!--    视频      -->\r\n        <a-tab-pane key=\"1\" tab=\"视频\">\r\n          <a-list :grid=\"{ gutter: 34, column: 4 }\" :data-source=\"data\" :pagination=\"pagination\">\r\n            <a-list-item slot=\"renderItem\" slot-scope=\"item, index\" class=\"column-space\">\r\n              <div class=\"list-item\">\r\n                <a-list-item-meta :description=\"item.description\" >\r\n                  <div slot=\"title\" class=\"header\">\r\n                    <img :src=\"item.img\" alt=\"vedio\" class=\"image\">\r\n                    <div class=\"title\">\r\n                      <template v-if=\"item.isCollected\">\r\n                        <div class=\"title-text\" :title=\"item.title\">{{ item.title }}</div>\r\n                        <div class=\"flex collect\">\r\n                          <a-icon type=\"star\" theme=\"filled\" :style=\"{color: '#1bcbb4'}\"/>\r\n                          <span class=\"collect-text\">已收藏</span>\r\n                        </div>\r\n                      </template>\r\n                      <template v-else>\r\n                        <div class=\"title-text title-width\" :title=\"item.title\">{{ item.title }}</div>\r\n                        <div class=\"flex collect\">\r\n                          <a-icon type=\"star\"/>\r\n                          <span class=\"collect-text\">收藏</span>\r\n                        </div>\r\n                      </template>\r\n                    </div>\r\n                  </div>\r\n                </a-list-item-meta>\r\n                <div class=\"decoration\">\r\n                  <div>\r\n                    <span>{{item.startTime}}</span>\r\n                    <span>开始</span>\r\n                  </div>\r\n                  <div>\r\n                    <span>教室： </span>\r\n                    <span>{{item.startTime}}</span>\r\n                  </div>\r\n                </div>\r\n                <div class=\"flex item-footer\">\r\n                  <div class=\"footer-presenter\">\r\n                    <span>主讲人：</span>\r\n                    <span>{{item.presenter}}</span>\r\n                  </div>\r\n                  <div>\r\n                    <template v-if=\"item.isFollow\">\r\n                      <span><a-icon type=\"heart\" theme=\"filled\"/></span>\r\n                      <span>已关注</span>\r\n                    </template>\r\n                    <template v-else>\r\n                      <span><a-icon type=\"heart\"/></span>\r\n                      <span>关注</span>\r\n                    </template>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </a-list-item>\r\n          </a-list>\r\n        </a-tab-pane>\r\n        <!--   课件     -->\r\n        <a-tab-pane key=\"2\" tab=\"课件\" force-render>\r\n          <div>我是课件</div>\r\n        </a-tab-pane>\r\n      </a-tabs>\r\n    </div>\r\n  </div>\r\n</template>\r\n\r\n<script>\r\n  const listData = [];      //我的关注\r\n  //我的粉丝\r\n  const data = [];\r\n  //我的关注\r\n  for (let i = 0; i < 100; i++) {\r\n    listData.push({\r\n      title: `李丽`,\r\n      avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',\r\n      description: '吉林珠海大学计算机学院老师',\r\n      course: '3',\r\n    });\r\n  }\r\n  //视频\r\n  for (let i = 0; i < 100; i++) {\r\n    data.push({\r\n      title: `理财公益免费VIP直播课程`,\r\n      img: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',\r\n      isCollected: true,\r\n      startTime: '5月26日 22：00',\r\n      classroom: '明德楼 A101',\r\n      presenter: '李丽',\r\n      isFollow: false,\r\n    });\r\n  }\r\n\r\n  export default {\r\n    name: \"Favorites.vue\",\r\n    data() {\r\n      return {\r\n        listData,\r\n        data,\r\n        pagination: {\r\n          total: 100,\r\n          defaultPageSize: 10,\r\n          showTotal: total => `共 ${total} 条数据`,\r\n          showQuickJumper: true,\r\n          showSizeChanger: true,\r\n          pageSizeOptions: ['5', '10', '15', '20'],\r\n        },\r\n      }\r\n    },\r\n    computed: {\r\n      rowSelection() {\r\n        return {\r\n          // onChange: (selectedRowKeys, selectedRows) => {\r\n          //   console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);\r\n          // },\r\n          getCheckboxProps: record => ({\r\n            props: {\r\n              disabled: record.name === 'Disabled User', // Column configuration not to be checked\r\n              name: record.name,\r\n            },\r\n          }),\r\n        };\r\n      },\r\n    },\r\n    methods: {\r\n      selectStyle(){\r\n\r\n      }\r\n    }\r\n  }\r\n</script>\r\n\r\n<style lang=\"less\" scoped>\r\n  .flex{\r\n    display: flex;\r\n    flex-direction: row;\r\n  }\r\n  .container{\r\n    width: 1032px;\r\n    height: 100%;\r\n    background-color: #ffffff;\r\n    border-radius: 4px;\r\n    border: 1px solid #eeeeee;\r\n    padding: 5px 13px;\r\n  }\r\n  .contain-header{\r\n    justify-content: space-between;\r\n    align-items: center;\r\n  }\r\n  .contain-title{\r\n    font-family: MicrosoftYaHei;\r\n    font-size: 18px;\r\n    font-weight: bold;\r\n    font-stretch: normal;\r\n    letter-spacing: 1px;\r\n    color: #1bcbb4;\r\n    margin-top: 10px;\r\n  }\r\n  .tag-page{\r\n    margin-top: 30px;\r\n    text-align: left;\r\n  }\r\n  .avatar{\r\n    border: 2px solid #1bcbb4;\r\n    width: 80px;\r\n    height: 80px;\r\n  }\r\n  .title{\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    margin-top: 5px;\r\n  }\r\n  .title-text{\r\n    font-family: MicrosoftYaHei;\r\n    font-size: 15px;\r\n    font-weight: 600;\r\n    color: #222222;\r\n    width: 152px;\r\n    text-align: left;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n  }\r\n  .title-width{\r\n    width: 170px;\r\n  }\r\n  .collect{\r\n    align-items: center;\r\n  }\r\n  .collect-text{\r\n    font-family: MicrosoftYaHei;\r\n    font-size: 12px;\r\n    color: #666666;\r\n    margin-left: 5px;\r\n  }\r\n  .item-footer{\r\n    font-family: MicrosoftYaHei;\r\n    font-size: 12px;\r\n    color: #666666;\r\n    border-top: 1px dashed #eaeaea;\r\n    justify-content: space-between;\r\n    padding: 5px;\r\n  }\r\n  .header{\r\n\r\n  }\r\n  .course{\r\n    font-family: MicrosoftYaHei;\r\n    font-size: 12px;\r\n    color: #999999;\r\n    margin-left: 15px;\r\n    margin-right: 15px;\r\n  }\r\n  .followed{\r\n    margin-left: 98px;\r\n    margin-top: -10px;\r\n  }\r\n  .image{\r\n    width: 100%;\r\n    /*height: 128px;*/\r\n  }\r\n  .more{\r\n    display: inline-block;\r\n    font-size: 13px;\r\n    cursor: pointer;\r\n  }\r\n  .more-list{\r\n    margin-top: -10px;\r\n    margin-bottom: 5px;\r\n    text-align: right;\r\n  }\r\n  .more:hover{\r\n    color: #1bcbb4;\r\n  }\r\n  .column-space{\r\n    margin-top: 12px;\r\n  }\r\n  .list-item{\r\n    border-radius: 4px;\r\n    border: solid 1px #eeeeee;\r\n    padding: 5px;\r\n    cursor: pointer;\r\n  }\r\n  .decoration{\r\n    font-size: 12px;\r\n    color: #666666;\r\n    text-align: left;\r\n    margin-top: 10px;\r\n    margin-bottom: 20px;\r\n  }\r\n  .footer-presenter{\r\n    color: #222222;\r\n    font-weight: 600;\r\n  }\r\n\r\n  /* 覆盖默认的ant样式 */\r\n  .tag-vedio{\r\n    :global(.ant-tabs-nav .ant-tabs-tab){\r\n      font-family: MicrosoftYaHei;\r\n      font-size: 17px;\r\n      padding: 8px 1px;\r\n      font-weight: 500;\r\n    }\r\n    :global(.ant-tabs-ink-bar){\r\n      height: 4px;\r\n    }\r\n  }\r\n\r\n\r\n</style>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/smart-classroom/src/views/management/Favorites.vue b/smart-classroom/src/views/management/Favorites.vue
+--- a/smart-classroom/src/views/management/Favorites.vue	(revision 52dc0b2983df478069eaddb80729c92232f97807)
++++ b/smart-classroom/src/views/management/Favorites.vue	(date 1609573163014)
+@@ -41,7 +41,7 @@
+                   </div>
+                   <div>
+                     <span>教室： </span>
+-                    <span>{{item.startTime}}</span>
++                    <span>{{item.classroom}}</span>
+                   </div>
+                 </div>
+                 <div class="flex item-footer">
