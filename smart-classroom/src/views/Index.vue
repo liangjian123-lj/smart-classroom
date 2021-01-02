@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header-bar></header-bar>
+    <index-header></index-header>
     <div class="banner" >
       <slide-show></slide-show>
     </div>
@@ -132,7 +132,7 @@
 </template>
 
 <script>
-import HeaderBar from "../components/HeaderBar";
+import IndexHeader from "../components/IndexHeader";
 import SlideShow from "../components/SlideShow";
 const listData = [];
 const data = [];
@@ -164,7 +164,7 @@ export default {
   name: "Index.vue",
   components: {
     SlideShow,
-    HeaderBar
+    IndexHeader
   },
   data() {
     return {
