@@ -261,6 +261,9 @@
     color: #222222;
     font-weight: 600;
   }
+  .tag-vedio{
+    text-align: center;
+  }
 
   /* 覆盖默认的ant样式 */
   .tag-vedio{
