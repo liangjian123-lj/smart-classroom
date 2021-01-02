@@ -107,10 +107,10 @@
               <div>
                 <a-list :grid="{ gutter: 34, column: 3 }" :data-source="data_1" >
                   <a-list-item slot="renderItem" slot-scope="item, index" >
-                    <div class="list-item" :style="{width:'276px',height:'127px'}">
+                    <div class="list-item" :style="{width:'310px',height:'127px'}">
                       <a-list-item-meta >
                         <div slot="title" class="header">
-                          <img :src="item.img"  class="image" :style="{width:'119px',height:'82px',float:'left'}">
+                          <img :src="item.img"  class="image" :style="{width:'155px',height:'82px',float:'left'}">
 
                           <div style="float: right">
                             <div class="title-text" :title="item.title" style="width: 140px;margin-bottom: 42px;">{{ item.title }}</div>
@@ -121,14 +121,14 @@
                           </div>
                         </div>
                       </a-list-item-meta>
-                      <div style="width: 276px;">
+                      <div style="width:300px;">
                         <div class="decoration" style="width: 129px;float: left">
                           <div>
                             <span>教室： </span>
                             <span>{{item.classroom}}</span>
                           </div>
                         </div>
-                        <div class="flex item-footer" style="width: 105px;float: right; margin-top: 5px;margin-right: 5px;">
+                        <div class="flex item-footer" style="width: 105px;float: right; margin-top: 5px;">
                           <div>
                             <template v-if="item.isFollow" >
                               <span><a-icon type="heart" theme="filled"/></span>
