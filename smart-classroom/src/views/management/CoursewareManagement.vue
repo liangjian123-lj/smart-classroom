@@ -3,14 +3,14 @@
     <!--  主题内容标题   -->
     <div class="flex contain-header">
       <div class="contain-title">课件管理</div>
-      <div class="flex contain-left">
+      <div class="flex contain-left" @click="addCourseweare">
         <div><icon-svg name="iconadd-dashboard" class="nav-icon" /></div>
         <div class="add">新增</div>
       </div>
     </div>
     <!--  查询    -->
     <a-form class="form" :form="form" @submit="handleSearch">
-      <a-row>
+      <a-row :gutter="24">
         <a-col
           :span="24"
           class="margin-bottom"
@@ -91,10 +91,14 @@
         </a-tab-pane>
       </a-tabs>
     </div>
+
+    <!--  新增弹窗  -->
+    <action-modal :modalVisible.sync="isShowModal" :data.sync="modalData" :title="modalTitle"></action-modal>
   </div>
 </template>
 
 <script>
+  import ActionModal from "../../components/Modal/ActionModal";
   const columns = [
     {
       title: '标题',
@@ -213,8 +217,13 @@
           showSizeChanger:true,
           pageSizeOptions: ['5', '10', '15', '20'],
         },
-
+        isShowModal: false,
+        modalTitle: '',
+        modalData: [],
       }
+    },
+    components: {
+      ActionModal
     },
     computed: {
       rowSelection() {
@@ -231,6 +240,44 @@
         };
       },
     },
+    methods: {
+      //新增课件
+      addCourseweare(){
+        this.isShowModal = true
+        this.modalTitle = '发布课件'
+        let data = [
+          {
+            label: '类型',
+            name: 'eWorkshop'
+          },
+          {
+            label: '标题',
+            name: 'eMachine'
+          },
+          {
+            label: '主讲人',
+            name: 'eName'
+          },
+          {
+            label: '专业',
+            name: 'eCode'
+          },
+          {
+            label: '封面',
+            name: 'eType'
+          },
+          {
+            label: '课件上传',
+            name: 'eType'
+          },
+          {
+            label: '评价',
+            name: 'eType'
+          },
+        ]
+        this.modalData.createData = data
+      }
+    }
   }
 </script>
 
