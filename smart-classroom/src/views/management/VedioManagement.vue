@@ -283,7 +283,7 @@
             name: 'eType'
           },
           {
-            label: '操作',
+            label: '评价',
             name: 'eType'
           },
         ]
