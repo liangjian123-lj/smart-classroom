@@ -10,7 +10,7 @@
     </div>
     <!--  查询    -->
     <a-form class="form" :form="form" @submit="handleSearch">
-      <a-row>
+      <a-row :gutter="24">
         <a-col
           :span="24"
           class="margin-bottom"
