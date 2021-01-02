@@ -15,7 +15,10 @@
               <div class="list-item">
                 <a-list-item-meta :description="item.description" >
                   <div slot="title" class="header">
-                    <img :src="item.img" alt="vedio" class="image">
+                    <div>
+                      <img :src="item.img" alt="vedio" class="image">
+                      <img src="../../assets/hot.png" class="hot-img">
+                    </div>
                     <div class="title">
                       <template v-if="item.isCollected">
                         <div class="title-text" :title="item.title">{{ item.title }}</div>
@@ -267,6 +270,11 @@
   }
   .tag-vedio{
     text-align: center;
+  }
+  .hot-img{
+    position: absolute;
+    top: 0px;
+    left: 17px;
   }
 
   /* 覆盖默认的ant样式 */
