@@ -359,7 +359,6 @@
           </a-layout-content>
         </a-layout>
         <a-layout-sider :style="{maxWidth:'250px',minWidth:'250px',width:'250px',}" >
-
             <div>
               <div style="width: 250px;height:25px; ">
                 <div style="width: 30px;height: 25px;float: left">
@@ -371,17 +370,16 @@
                 <div class="geng" :style="{marginTop:'5px'}"><a href="#" style="color: #999999">更多>></a></div>
               </div>
             </div>
-          <div>
+          <div  class="list">
             <a-list :grid="{ gutter: 34, column:2 }" :data-source="data_5" >
-              <a-list-item slot="renderItem" slot-scope="item, index" class="column-space">
-                <div class="list-item">
-                  <a-list-item-meta :description="item.description" >
-                    <div slot="title" class="header">
+              <a-list-item slot="renderItem" slot-scope="item, index" class="column-space" style="padding: 0px 3px 0px 3px; height: 120px;" >
+                <div class="list-item" >
+                  <a-list-item-meta :description="item.description"  >
+                    <div slot="title" class="header" >
                       <img :src="item.img" alt="vedio" class="image" style="width: 100px;">
                       <div class="title-text" :title="item.title" style="width: 100px;">{{ item.title }}</div>
                     </div>
                   </a-list-item-meta>
-
                   <div class="flex item-footer">
                     <div class="footer-presenter">
                       <span>主讲人：</span>
@@ -391,7 +389,12 @@
                 </div>
               </a-list-item>
             </a-list>
+            <div style="width: 100px;height: 25px;float: right;margin-top: 12px;">
+              <span><a-icon type="star" :style="{color: '#1bcbb4'}"/></span>
+              <span><a href="#" style="color:#999;font-size: 12px; ">换一批</a></span>
+            </div>
           </div>
+
         </a-layout-sider>
       </a-layout>
       <a-layout-footer>
@@ -505,7 +508,12 @@ export default {
   }
 }
 </script>
-
+<style>
+.list .ant-row{
+  margin: 0px!important;
+  width: 250px;
+}
+</style>
 <style lang="less" scoped>
 .banner{
   margin-top:20px;
@@ -541,6 +549,9 @@ export default {
 #components-layout-demo-basic > .ant-layout:last-child {
   margin: 0;
 }
+//.list{
+//  border: 1px solid #9999;
+//}
 .zhibo{
   width: 77px;
   height: 25px;
