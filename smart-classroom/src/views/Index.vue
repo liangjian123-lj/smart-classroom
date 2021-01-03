@@ -358,7 +358,41 @@
 
           </a-layout-content>
         </a-layout>
-        <a-layout-sider :style="{maxWidth:'250px',minWidth:'250px',width:'250px'}">Sider</a-layout-sider>
+        <a-layout-sider :style="{maxWidth:'250px',minWidth:'250px',width:'250px',}" >
+
+            <div>
+              <div style="width: 250px;height:25px; ">
+                <div style="width: 30px;height: 25px;float: left">
+                  <div style="width: 27px;height: 25px;float: left;">
+                    <img src="../assets/sheying.png" style="line-height: 25px">
+                  </div>
+                  <div class="zhibo">名师讲坛</div>
+                </div>
+                <div class="geng" :style="{marginTop:'5px'}"><a href="#" style="color: #999999">更多>></a></div>
+              </div>
+            </div>
+          <div>
+            <a-list :grid="{ gutter: 34, column:2 }" :data-source="data_5" >
+              <a-list-item slot="renderItem" slot-scope="item, index" class="column-space">
+                <div class="list-item">
+                  <a-list-item-meta :description="item.description" >
+                    <div slot="title" class="header">
+                      <img :src="item.img" alt="vedio" class="image" style="width: 100px;">
+                      <div class="title-text" :title="item.title" style="width: 100px;">{{ item.title }}</div>
+                    </div>
+                  </a-list-item-meta>
+
+                  <div class="flex item-footer">
+                    <div class="footer-presenter">
+                      <span>主讲人：</span>
+                      <span>{{item.presenter}}</span>
+                    </div>
+                  </div>
+                </div>
+              </a-list-item>
+            </a-list>
+          </div>
+        </a-layout-sider>
       </a-layout>
       <a-layout-footer>
         <index-footer></index-footer>
@@ -377,6 +411,7 @@ const data_1=[];
 const data_2=[];
 const data_3=[];
 const data_4=[];
+const data_5=[];
 
 for (let i = 0; i < 8; i++) {
   data.push({
@@ -433,6 +468,17 @@ for (let i=0;i<4;i++){
     isFollow: false,
   });
 }
+for (let i=0;i<4;i++){
+  data_5.push({
+    title: `理财公益免费VIP直播课程`,
+    img: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
+    isCollected: true,
+    startTime: '5月10日 16：00',
+    classroom: '明德楼 A501',
+    presenter: '李丽',
+    isFollow: false,
+  });
+}
 export default {
   name: "Index.vue",
   components: {
@@ -448,6 +494,7 @@ export default {
       data_2,
       data_3,
       data_4,
+      data_5,
     }
   },
 
@@ -478,14 +525,16 @@ export default {
 #components-layout-demo-basic .ant-layout-sider {
   background: #3ba0e9;
   color: #fff;
-  line-height: 120px;
+  //line-height: 120px;
 }
 #components-layout-demo-basic .ant-layout-content {
   /*background: rgba(16, 142, 233, 1);*/
   color: #fff;
   min-height: 120px;
+
   /*line-height: 120px;*/
 }
+#components-layout-demo-basic .ant-layout-sider{background-color:#ffffff;}
 #components-layout-demo-basic > .ant-layout {
   margin-bottom: 48px;
 }
@@ -516,6 +565,7 @@ export default {
   color: #999999;
   float: right;
 }
+
 .flex{
   display: flex;
   flex-direction: row;
@@ -618,12 +668,14 @@ export default {
 }
 .column-space{
   margin-top: 12px;
+
 }
 .list-item{
   border-radius: 4px;
   border: solid 1px #eeeeee;
   padding: 5px;
   cursor: pointer;
+  background-color: #ffffff;
 }
 .decoration{
   font-size: 12px;
@@ -638,6 +690,7 @@ export default {
 }
 
 /* 覆盖默认的ant样式 */
+
 .tag-vedio{
 :global(.ant-tabs-nav .ant-tabs-tab){
   font-family: MicrosoftYaHei;
@@ -645,6 +698,7 @@ export default {
   padding: 8px 1px;
   font-weight: 500;
 }
+
 :global(.ant-tabs-ink-bar){
   height: 4px;
 }
