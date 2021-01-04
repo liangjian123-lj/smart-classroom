@@ -1,9 +1,15 @@
 <template >
-  <a-carousel autoplay :style="{width:'1280px',height:'160px',margin:'0 auto'}">
-    <template v-for="(item,index) in imgList">
-      <div ><img :src="item.src" :alt="item.name" class="img"></div>
-    </template>
-  </a-carousel>
+  <div class="contain">
+    <div class="carousel">
+      <a-carousel autoplay>
+        <template v-for="(item,index) in imgList">
+          <div class="img-contain">
+            <img :src="item.src" class="image">
+          </div>
+        </template>
+      </a-carousel>
+    </div>
+  </div>
 </template>
 <script>
 import banner from '../assets/banner.png'
@@ -16,18 +22,14 @@ export default {
           src: banner,
           name: 'img1'
         },
-        // {
-        //   src: avatar,
-        //   name: 'img1'
-        // },
-        // {
-        //   src: avatar,
-        //   name: 'img1'
-        // },
-        // {
-        //   src: avatar,
-        //   name: 'img1'
-        // },
+        {
+          src: banner,
+          name: 'img1'
+        },
+        {
+          src: banner,
+          name: 'img1'
+        },
       ]
     }
   }
@@ -35,19 +37,32 @@ export default {
 };
 </script>
 <style scoped>
-/* For demo */
-.ant-carousel >>> .slick-slide {
-  text-align: center;
-  height: 158px;
-  line-height: 160px;
-  background: #364d79;
-  border-radius: 10px;
-  overflow: hidden;
-}
+  /* For demo */
+  .ant-carousel >>> .slick-slide {
+    text-align: center;
+    height: 158px;
+    line-height: 160px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .ant-carousel >>> .slick-slide h3 {
+    color: #1bcbb4;
+  }
 
-.ant-carousel >>> .slick-slide h3 {
-  color: #fff;
-}
+  /*自定义样式*/
+  .contain{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .carousel{
+    width: 1280px;
+  }
+  .img-contain{
+    width: 1280px;
+    height: 160px;
+  }
+
 </style>
 
 
