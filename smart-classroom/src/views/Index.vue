@@ -37,7 +37,9 @@
                 </a-tabs>
               </div>
             </a-layout-content>
-            <a-layout-sider style="flex: 0 0 280px;max-width: 280px;width: 280px;">Sider</a-layout-sider>
+            <a-layout-sider style="flex: 0 0 280px;max-width: 280px;width: 280px;">
+              <side-bar></side-bar>
+            </a-layout-sider>
           </a-layout>
         </div>
       </div>
@@ -59,6 +61,7 @@
   import LiveBroadcast from "./IndexTab/LiveBroadcast";
   import LivePreview from "./IndexTab/LivePreview";
   import OnDemand from "./IndexTab/OnDemand";
+  import SideBar from "../components/SideBar";
 
   export default {
     name: "Index.vue",
@@ -71,7 +74,8 @@
       CoursewareDownload,
       LiveBroadcast,
       LivePreview,
-      OnDemand
+      OnDemand,
+      SideBar
     },
     methods: {
       callback(key) {
@@ -133,12 +137,11 @@
       line-height: 1.5;
     }
     .ant-layout-sider {
-      background: #3ba0e9;
+      background: #f6f6f6;
       color: #fff;
-      line-height: 120px;
     }
     .ant-layout-content {
-      /*background: rgba(16, 142, 233, 1);*/
+      background-color: #f6f6f6;
       color: #333333;
       min-height: 120px;
       line-height: 120px;
