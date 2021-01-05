@@ -57,10 +57,12 @@ export default {
   }
   .carousel{
     width: 1280px;
+    overflow: hidden;
   }
   .img-contain{
     width: 1280px;
     height: 160px;
+    overflow: hidden;
   }
 
 </style>

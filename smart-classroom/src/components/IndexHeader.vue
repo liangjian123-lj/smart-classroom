@@ -49,7 +49,6 @@
     width: 100%;
     height: 68px;
     background-color: #5dd5c8;
-    box-shadow: 0px 1px 13px 0px #bababa;
     margin-top: 0px;
   }
   .contain-flex{
