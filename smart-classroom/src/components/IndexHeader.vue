@@ -64,7 +64,6 @@
     margin-right: 10px;
   }
   .title{
-    width: 120px;
     font-family: MicrosoftYaHei;
     font-size: 16px;
     font-weight: bold;
@@ -72,7 +71,8 @@
     line-height: 40px;
     letter-spacing: 1px;
     color: #1a1918;
-    margin-left: 12px;
+    margin-right: 30px;
+    margin-left: 6px;
   }
   .username{
     width: 30px;
