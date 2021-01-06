@@ -69,7 +69,66 @@
         </a-tab-pane>
         <!--   课件     -->
         <a-tab-pane key="2" tab="课件" force-render>
-          <div>我是课件</div>
+          <a-list :grid="{ gutter: 34, column: 4 }" :data-source="coursewareData" :pagination="pagination">
+            <a-list-item slot="renderItem" slot-scope="item, index" class="column-space">
+              <div class="list-item">
+                <a-list-item-meta :description="item.description" >
+                  <div slot="title" class="header">
+                    <div>
+                      <img :src="item.img" alt="vedio" class="image">
+                      <img src="../../assets/hot.png" class="hot-img">
+                    </div>
+                    <div class="title">
+                      <template v-if="item.isCollected">
+                        <div class="title-text" :title="item.title">{{ item.title }}</div>
+                        <div class="flex collect">
+                          <a-icon type="star" theme="filled" :style="{color: '#1bcbb4'}"/>
+                          <span class="collect-text">已收藏</span>
+                        </div>
+                      </template>
+                      <template v-else>
+                        <div class="title-text title-width" :title="item.title">{{ item.title }}</div>
+                        <div class="flex collect">
+                          <a-icon type="star"/>
+                          <span class="collect-text">收藏</span>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </a-list-item-meta>
+                <div class="decoration">
+                  <div>
+                    <span>所属课程：</span>
+                    <span>{{item.courseBelong}}</span>
+                  </div>
+                  <div>
+                    <span>所属视频： </span>
+                    <span>{{item.videoBelong}}</span>
+                  </div>
+                  <div>
+                    <span>收藏数： </span>
+                    <span :style="{color: '#1bcbb4'}">{{item.collectNum}}</span>
+                  </div>
+                </div>
+                <div class="flex item-footer">
+                  <div class="footer-presenter">
+                    <span>主讲人：</span>
+                    <span>{{item.presenter}}</span>
+                  </div>
+                  <div>
+                    <template v-if="item.isFollow">
+                      <span><a-icon type="heart" theme="filled"/></span>
+                      <span>已关注</span>
+                    </template>
+                    <template v-else>
+                      <span><a-icon type="heart"/></span>
+                      <span>关注</span>
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </a-list-item>
+          </a-list>
         </a-tab-pane>
       </a-tabs>
     </div>
@@ -80,6 +139,8 @@
   const listData = [];      //我的关注
   //我的粉丝
   const data = [];
+  //课件
+  const coursewareData = [];
   //我的关注
   for (let i = 0; i < 100; i++) {
     listData.push({
@@ -101,6 +162,19 @@
       isFollow: false,
     });
   }
+  //课件
+  for (let i = 0; i < 100; i++) {
+    coursewareData.push({
+      title: `理财公益免费VIP直播课程`,
+      img: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
+      isCollected: true,
+      courseBelong: '理财公益直播',
+      videoBelong: '理财公益直播',
+      collectNum: '1000',
+      presenter: '李丽',
+      isFollow: false,
+    });
+  }
 
   export default {
     name: "Favorites.vue",
@@ -108,6 +182,7 @@
       return {
         listData,
         data,
+        coursewareData,
         pagination: {
           total: 100,
           defaultPageSize: 10,
