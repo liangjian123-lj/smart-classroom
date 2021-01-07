@@ -454,7 +454,7 @@
     margin-top: 5px;
   }
   .title-width{
-    width: 160px;
+    width: 155px;
   }
   .collect{
     align-items: center;
