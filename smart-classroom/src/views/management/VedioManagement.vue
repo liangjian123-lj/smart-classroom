@@ -80,10 +80,70 @@
         </a-table>
       </a-tab-pane>
       <a-tab-pane key="2" tab="通过" force-render>
-        Content of Tab Pane 2
+        <a-table :row-selection="rowSelection" :columns="columns" :data-source="data" :pagination="pagination" bordered class="column">
+          <template
+            v-for="col in ['title', 'vedio', 'courseware','presenter','profession','time','publisher','evaluation','status']"
+            slot-scope="text, record, index"
+          >
+            {{columns}}
+            <div :key="index" class="column-content" slot="title" :title="text">
+              {{ text }}
+            </div>
+          </template>
+          <!--    表格操作列内容        -->
+          <template slot="vedio" slot-scope="text, record, index">
+            <div class="img-con">
+              <img src="../../assets/su.jpeg" alt="" class="img">
+            </div>
+          </template>
+          <!--    表格操作列内容        -->
+          <template slot="operation" slot-scope="text, record, index">
+            <div class="editable-row-operations">
+               <span class="oper">
+                 <div class="flex icon-flex">
+                    <a @click="() => editDev(record,text)" class="flex edit"><icon-svg name="iconbianji" class="icon-oper" />编辑</a>
+                    <a-popconfirm title="是否确定删除?" cancelText="取消" okText="确定" @confirm="() => deleteDev(record.key)">
+                      <a class="flex delete"><icon-svg name="iconshanchu" class="icon-oper" />删除</a>
+                    </a-popconfirm>
+                 </div>
+                 <div class="flex space-icon icon-flex">
+                    <a @click="() => editDev(record,text)" class="flex shield"><icon-svg name="iconbaojingpingbi-01" class="icon-oper" />屏蔽</a>
+                    <a @click="() => editDev(record,text)" class="flex disable"><icon-svg name="iconjinyong" class="icon-oper" />禁用</a>
+                 </div>
+                </span>
+            </div>
+          </template>
+        </a-table>
       </a-tab-pane>
       <a-tab-pane key="3" tab="未通过">
-        Content of Tab Pane 3
+        <a-table :row-selection="rowSelection" :columns="columns" :data-source="data" :pagination="pagination" bordered class="column">
+          <!--    表格操作列内容        -->
+          <template slot="vedio" slot-scope="text, record, index">
+            <div class="img-con">
+              <img src="../../assets/su.jpeg" alt="" class="img">
+            </div>
+          </template>
+          <template slot="status" slot-scope="text, record, index">
+            审核未通过
+          </template>
+          <!--    表格操作列内容        -->
+          <template slot="operation" slot-scope="text, record, index">
+            <div class="editable-row-operations">
+               <span class="oper">
+                 <div class="flex icon-flex">
+                    <a @click="() => editDev(record,text)" class="flex edit"><icon-svg name="iconbianji" class="icon-oper" />编辑</a>
+                    <a-popconfirm title="是否确定删除?" cancelText="取消" okText="确定" @confirm="() => deleteDev(record.key)">
+                      <a class="flex delete"><icon-svg name="iconshanchu" class="icon-oper" />删除</a>
+                    </a-popconfirm>
+                 </div>
+                 <div class="flex space-icon icon-flex">
+                    <a @click="() => editDev(record,text)" class="flex shield"><icon-svg name="iconbaojingpingbi-01" class="icon-oper" />屏蔽</a>
+                    <a @click="() => editDev(record,text)" class="flex disable"><icon-svg name="iconjinyong" class="icon-oper" />禁用</a>
+                 </div>
+                </span>
+            </div>
+          </template>
+        </a-table>
       </a-tab-pane>
     </a-tabs>
   </div>
