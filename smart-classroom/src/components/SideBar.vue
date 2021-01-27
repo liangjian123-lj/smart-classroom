@@ -25,17 +25,36 @@
     </div>
     <!--  名师课程表  -->
     <div class="course-con">
-      <a-table :columns="columns" :data-source="data" class="course-table" :pagination=false>
-<!--        <template slot="name" slot-scope="text">-->
-<!--          <a>{{ text }}</a>-->
-<!--        </template>-->
-      </a-table>
+      <a-table :columns="columns" :data-source="data" class="course-table" :pagination=false></a-table>
+    </div>
+    <!--  名师推荐  -->
+    <div class="teacher-con">
+      <div class="flex header">
+        <div class="flex flex-center">
+          <icon-svg name="iconwangxiaomingshi" class="nav-icon"/>
+          <div class="title">名师推荐</div>
+        </div>
+        <div class="more">更多>></div>
+      </div>
+      <div class="fammous-con">
+        <div v-for="(item,index) in teacherList" :key="index" class="fammous-con box">
+          <div class="img-con">
+            <img :src="item.img" alt="vedio" class="image-avatar">
+          </div>
+          <div class="famous-title" :title="item.teacherName">{{item.teacherName}}</div>
+          <div>
+            <a-button>取消关注</a-button>
+          </div>
+          <div class="profession">{{item.profession}}</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
   const famousCourse = [];
+  const teacherList = [];
   //名师课程表
   const columns = [
     {
@@ -109,6 +128,15 @@
       presenter: '李丽',
     });
   }
+  //名师推荐
+  for (let i = 0; i < 4; i++){
+    teacherList.push({
+      teacherName: `李莉`,
+      img: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
+      isFollow: true,
+      profession: '计算机与应用',
+    });
+  }
   export default {
     name: "SideBar.vue",
     data(){
@@ -116,6 +144,7 @@
         famousCourse,
         data,
         columns,
+        teacherList
       }
     }
   }
@@ -223,6 +252,23 @@
     border-radius: 4px;
     border: solid 1px #dddddd;
     text-align: center;
+  }
+  /*名师推荐*/
+  .teacher-con{
+    margin-top: 20px;
+    background-color: #ffffff;
+  }
+  .image-avatar{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid #1bcbb4;
+  }
+  .profession{
+    font-size: 12px;
+    color: #222222;
+    text-align: center;
+    margin-top: 5px;
   }
 
   /* 覆盖ant默认样式 */
