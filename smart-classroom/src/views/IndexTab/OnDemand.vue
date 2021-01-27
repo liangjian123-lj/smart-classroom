@@ -6,93 +6,42 @@
         <div slot="tabBarExtraContent">
           系列课程
         </div>
-        
         <!-- 计算机应用 -->
         <a-tab-pane key="1" tab="计算机应用">
-          <div class="tag-content">
-              <a-list :grid="{ gutter: 34, column: 4 }" :data-source="data" :pagination="pagination">
-                <a-list-item slot="renderItem" slot-scope="item, index" class="column-space">
-                      <div class="list-item">
-                        <a-list-item-meta :description="item.description" >
-                          <div slot="title" class="header">
-                            <div>
-                              <img :src="item.img" alt="vedio" class="image">
-                              <img src="../../assets/hot.png" class="hot-img">
-                            </div>
-                            <div class="item-title">
-                              <template v-if="item.isCollected">
-                                <div class="title-text" :title="item.title">{{ item.title }}</div>
-                                <div class="flex collect">
-                                  <a-icon type="star" theme="filled" :style="{color: '#1bcbb4'}" class="icon-star"/>
-                                  <span class="collect-text">已收藏</span>
-                                </div>
-                              </template>
-                              <template v-else>
-                                <div class="title-text title-width" :title="item.title">{{ item.title }}</div>
-                                <div class="flex collect">
-                                  <a-icon type="star"  class="icon-star"/>
-                                  <span class="collect-text">收藏</span>
-                                </div>
-                              </template>
-                            </div>
-                          </div>
-                        </a-list-item-meta>
-                        <div class="decoration">
-                          <div>
-                            <span>{{item.startTime}}</span>
-                            <span>开始</span>
-                          </div>
-                          <div>
-                            <span>教室： </span>
-                            <span>{{item.startTime}}</span>
-                          </div>
-                        </div>
-                        <div class="flex item-footer">
-                          <div class="footer-presenter">
-                            <span>主讲人：</span>
-                            <span>{{item.presenter}}</span>
-                          </div>
-                          <div>
-                            <template v-if="item.isFollow">
-                              <span><a-icon type="heart" theme="filled"/></span>
-                              <span>已关注</span>
-                            </template>
-                            <template v-else>
-                              <span><a-icon type="heart"/></span>
-                              <span>关注</span>
-                            </template>
-                          </div>
-                        </div>
-                      </div>
-                    </a-list-item>
-                  </a-list>
-            </div>
+          <computer-application></computer-application>
         </a-tab-pane>
         <!-- 物理学 -->
         <a-tab-pane key="2" tab="物理学" force-render>
-          物理学
+          <physics></physics>
         </a-tab-pane>
         <!-- 生物技术 -->
         <a-tab-pane key="3" tab="生物技术">
-          生物技术
+          <biotechnology></biotechnology>
         </a-tab-pane>
         <!-- 金融分析 -->
         <a-tab-pane key="4" tab="金融分析">
-          金融分析
+          <financial-analysis></financial-analysis>
         </a-tab-pane>
         <!-- 现代文学 -->
         <a-tab-pane key="5" tab="现代文学">
-          现代文学
+          <modern-literature></modern-literature>
         </a-tab-pane>
         <!-- 科学与应用 -->
         <a-tab-pane key="6" tab="科学与应用">
-          科学与应用
+          <science-application></science-application>
         </a-tab-pane>
       </a-tabs>
     </div>
   </div>
 </template>
 <script>
+  import Biotechnology from "./OnDemand/Biotechnology";
+  import ComputerApplication from "./OnDemand/ComputerApplication";
+  import FinancialAnalysis from "./OnDemand/FinancialAnalysis";
+  import ModernLiterature from "./OnDemand/ModernLiterature";
+  import Physics from "./OnDemand/Physics";
+  import ScienceApplication from "./OnDemand/ScienceApplication";
+
   const data = [];
   //点播
   for (let i = 0; i < 20; i++) {
@@ -108,6 +57,14 @@
   }
   export default {
     name: "OnDemand.vue",
+    components: {
+      Biotechnology,
+      ComputerApplication,
+      FinancialAnalysis,
+      ModernLiterature,
+      Physics,
+      ScienceApplication
+    },
     data(){
       return{
         data,
@@ -202,9 +159,6 @@
     justify-content: space-between;
     padding: 5px;
   }
-  .header{
-
-  }
   .image{
     width: 100%;
     /*height: 128px;*/
@@ -212,7 +166,6 @@
   .icon-star{
     font-size: 13px;
   }
-
   /* 覆盖默认的ant样式 */
   .tag-onDemand >>> .ant-tabs-nav-container{
     background-color:transparent;
